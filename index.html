@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maxence Soubeyrand — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── PALETTE ──────────────────────────────────────────
+       #0B1F26  deep teal-black   (page bg)
+       #122830  dark teal         (card bg)
+       #1A3A40  section alt bg
+       #2D6A4F  forest green      (border accents)
+       #52B788  medium green      (primary accent)
+       #00C9A7  turquoise         (highlight / glow)
+       #7EFCE1  mint              (light accent)
+       #E8F8F5  near-white        (body text)
+       #9EC8C0  muted teal        (secondary text)
+    ───────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0B1F26;
+      --bg-card:   #122830;
+      --bg-alt:    #1A3A40;
+      --green:     #52B788;
+      --teal:      #00C9A7;
+      --mint:      #7EFCE1;
+      --border:    #2D6A4F;
+      --text:      #E8F8F5;
+      --muted:     #9EC8C0;
+      --glow:      rgba(0, 201, 167, 0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 6%;
+      background: rgba(11, 31, 38, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(45, 106, 79, 0.35);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--teal);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 6%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 70% 50%, rgba(0, 201, 167, 0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 20%, rgba(82, 183, 136, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(45, 106, 79, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 106, 79, 0.07) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      color: var(--teal);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-name .accent {
+      background: linear-gradient(135deg, var(--green) 0%, var(--teal) 60%, var(--mint) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text);
+      opacity: 0.85;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .contact-chip:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: rgba(0, 201, 167, 0.07);
+    }
+
+    .contact-chip svg { flex-shrink: 0; }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--teal));
+      color: #0B1F26;
+      box-shadow: 0 0 24px rgba(0, 201, 167, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px rgba(0, 201, 167, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--teal);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--teal);
+      background: rgba(0, 201, 167, 0.07);
+      transform: translateY(-2px);
+    }
+
+    /* ── STATS ── */
+    .hero-stats {
+      position: absolute;
+      right: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 1;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      min-width: 130px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--teal));
+    }
+
+    .stat-card:hover {
+      border-color: var(--teal);
+      transform: translateX(-4px);
+    }
+
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--green), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 6%;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .section-title .accent { color: var(--teal); }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--teal));
+      border-radius: 2px;
+      margin-top: 1rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg-alt);
+      border-top: 1px solid rgba(45, 106, 79, 0.25);
+      border-bottom: 1px solid rgba(45, 106, 79, 0.25);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text);
+      opacity: 0.85;
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .highlight-item:hover {
+      border-color: var(--teal);
+      transform: translateX(4px);
+    }
+
+    .highlight-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(82,183,136,0.2), rgba(0,201,167,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .highlight-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .highlight-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--teal) 0%, var(--green) 60%, transparent 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 8px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.2), 0 0 14px rgba(0, 201, 167, 0.5);
+    }
+
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem 2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .timeline-card:hover {
+      border-color: var(--teal);
+      transform: translateX(6px);
+      box-shadow: -4px 0 24px rgba(0, 201, 167, 0.1);
+    }
+
+    .timeline-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-company {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .timeline-period {
+      font-size: 0.78rem;
+      color: var(--teal);
+      background: rgba(0, 201, 167, 0.1);
+      border: 1px solid rgba(0, 201, 167, 0.25);
+      border-radius: 100px;
+      padding: 0.25rem 0.85rem;
+      white-space: nowrap;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--text);
+      opacity: 0.82;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.73rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      background: rgba(45, 106, 79, 0.2);
+      border: 1px solid rgba(45, 106, 79, 0.4);
+      color: var(--mint);
+      font-weight: 500;
+    }
+
+    .achievement {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0, 201, 167, 0.07);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .achievement .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg-alt); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: border-color 0.2s;
+    }
+
+    .skill-category:hover { border-color: var(--teal); }
+
+    .skill-cat-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-cat-title .icon {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: rgba(0, 201, 167, 0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-pill {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      background: rgba(82, 183, 136, 0.1);
+      border: 1px solid rgba(82, 183, 136, 0.25);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── LANGUAGES ── */
+    .lang-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      min-width: 180px;
+      flex: 1;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .lang-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+
+    .lang-flag {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .lang-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .lang-level {
+      font-size: 0.8rem;
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    .lang-bar {
+      margin-top: 1rem;
+      height: 4px;
+      background: rgba(45, 106, 79, 0.3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--green), var(--teal));
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .edu-card:hover { border-color: var(--teal); transform: translateX(4px); }
+
+    .edu-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: rgba(0, 201, 167, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .edu-school {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .edu-degree {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .edu-period {
+      font-size: 0.78rem;
+      color: var(--teal);
+      margin-top: 0.4rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg-alt);
+      border-top: 1px solid rgba(45, 106, 79, 0.25);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-left h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .contact-left p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 380px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--teal);
+      transform: translateX(4px);
+    }
+
+    .contact-link-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(82,183,136,0.2), rgba(0,201,167,0.2));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-link-text { flex: 1; }
+    .contact-link-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+    .contact-link-value { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 6%;
+      text-align: center;
+      border-top: 1px solid rgba(45, 106, 79, 0.2);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer span { color: var(--teal); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-stats { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 5%; }
+      nav { padding: 1rem 5%; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.75rem; }
+      .hero-contacts { gap: 0.6rem; }
+    }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">MS.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">Open to opportunities</div>
+
+      <h1 class="hero-name">
+        Maxence<br>
+        <span class="accent">Soubeyrand</span>
+      </h1>
+
+      <p class="hero-title">Logistics & Customer Service Professional</p>
+
+      <p class="hero-desc">
+        Managing strategic accounts across EMEA. Order optimization, performance
+        improvement, and cross-functional execution powered by Salesforce, Oracle, and Power BI.
+      </p>
+
+      <div class="hero-contacts">
+        <a class="contact-chip" href="mailto:soubeyrand.max@gmail.com">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          soubeyrand.max@gmail.com
+        </a>
+        <a class="contact-chip" href="tel:+33633676033">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +33 6 33 67 60 33
+        </a>
+        <span class="contact-chip">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Leuven, Belgium
+        </span>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-outline" href="#experience">View experience</a>
+      </div>
+    </div>
+
+    <!-- STATS (desktop only) -->
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Strategic<br>Accounts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">88→95%</div>
+        <div class="stat-label">Performance<br>Improvement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">EMEA</div>
+        <div class="stat-label">Markets<br>Coverage</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header fade-up">
+      <div class="section-tag">About me</div>
+      <h2 class="section-title">Precision meets <span class="accent">people</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>
+          I am a Logistics &amp; Customer Service professional with a track record of
+          managing strategic accounts across EMEA markets. My strength is combining
+          operational rigor with a genuine drive to deliver measurable results.
+        </p>
+        <p>
+          At <strong>Atmus Filtration Technologies</strong>, I run the end-to-end order lifecycle for
+          20 strategic accounts across the Middle East and Africa, working hand-in-hand
+          with logistics, finance, and sales teams.
+        </p>
+        <p>
+          At <strong>DHL Express Worldwide</strong>, I managed the Nokia global account and
+          drove service performance from 88% to 95% through data-driven analysis,
+          warehouse coordination, and Monthly &amp; Quarterly Business Reviews to senior
+          management.
+        </p>
+        <p>
+          I also founded and grew <strong>SBD Ménage</strong>, a cleaning services company,
+          handling customer acquisition and account management across Airbnb,
+          residential, and corporate clients.
+        </p>
+        <p>
+          Bachelor's degree in Economics and Political Science from Université
+          Clermont-Auvergne. French native, English C1.
+        </p>
+      </div>
+
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🎯</div>
+          <div>
+            <div class="highlight-title">Measurable impact</div>
+            <div class="highlight-desc">Lifted Nokia account performance from 88% to 95%</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🌍</div>
+          <div>
+            <div class="highlight-title">EMEA exposure</div>
+            <div class="highlight-desc">20 strategic MEA accounts, global logistics, multicultural teams</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">📊</div>
+          <div>
+            <div class="highlight-title">Tools-fluent</div>
+            <div class="highlight-desc">Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🚀</div>
+          <div>
+            <div class="highlight-title">Entrepreneurial</div>
+            <div class="highlight-desc">Founded and grew SBD Ménage from zero to active client base</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header fade-up">
+      <div class="section-tag">Career</div>
+      <h2 class="section-title">Work <span class="accent">experience</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Role 1: Atmus -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <div class="timeline-company">Atmus Filtration Technologies</div>
+            <div class="timeline-period">Jan 2025 — Present</div>
+          </div>
+          <div class="timeline-role">Customer Support Analyst</div>
+          <p class="timeline-desc">
+            Managing the end-to-end order lifecycle for 20 strategic MEA accounts,
+            ensuring on-time delivery and high customer satisfaction. Handle customer
+            claims, issue credit/debit notes, and collaborate with logistics, finance,
+            and sales teams to support regional growth. Use Salesforce and Oracle to
+            track orders, manage interactions, and drive operational efficiency.
+          </p>
+          <div class="achievement">
+            <span>Managing</span>
+            <span class="num">20</span>
+            <span>strategic MEA accounts end-to-end</span>
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">Salesforce</span>
+            <span class="tag">Oracle</span>
+            <span class="tag">Order Lifecycle</span>
+            <span class="tag">MEA Region</span>
+            <span class="tag">Customer Claims</span>
+            <span class="tag">Cross-functional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role 2: SBD Ménage -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <div class="timeline-company">SBD Ménage</div>
+            <div class="timeline-period">2024 — 2025</div>
+          </div>
+          <div class="timeline-role">Entrepreneur / Business Owner</div>
+          <p class="timeline-desc">
+            Founded and grew a cleaning services company from the ground up. Owned the
+            full commercial cycle: customer acquisition, client management, and service
+            delivery across Airbnb, residential, and corporate buildings.
+          </p>
+          <div class="achievement">
+            <span>Built and managed a portfolio across</span>
+            <span class="num">3</span>
+            <span>client segments</span>
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">Entrepreneurship</span>
+            <span class="tag">Customer Acquisition</span>
+            <span class="tag">B2B & B2C</span>
+            <span class="tag">Operations</span>
+            <span class="tag">Service Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role 3: DHL -->
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <div class="timeline-company">DHL Express Worldwide</div>
+            <div class="timeline-period">2022 — 2023</div>
+          </div>
+          <div class="timeline-role">Customer Service Support Coordinator (Account Manager)</div>
+          <p class="timeline-desc">
+            Managed the Nokia global account, ensuring high satisfaction and retention.
+            Conducted performance analyses to identify improvement opportunities,
+            coordinated with warehouses to implement corrective action plans, and
+            delivered Monthly &amp; Quarterly Business Reviews to senior management,
+            presenting KPIs, performance trends, and improvement initiatives.
+          </p>
+          <div class="achievement">
+            <span>Lifted Nokia service performance from</span>
+            <span class="num">88% → 95%</span>
+          </div>
+          <div class="timeline-tags">
+            <span class="tag">Account Management</span>
+            <span class="tag">Nokia</span>
+            <span class="tag">QBR / MBR</span>
+            <span class="tag">Performance Analysis</span>
+            <span class="tag">KPI Reporting</span>
+            <span class="tag">Warehouse Coordination</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header fade-up">
+      <div class="section-tag">Expertise</div>
+      <h2 class="section-title">Skills &amp; <span class="accent">tools</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="skills-grid fade-up">
+      <div class="skill-category">
+        <div class="skill-cat-title">
+          <div class="icon">🛠️</div>
+          Technical Tools
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">Salesforce</span>
+          <span class="skill-pill">Oracle</span>
+          <span class="skill-pill">Power BI</span>
+          <span class="skill-pill">Advanced Excel</span>
+          <span class="skill-pill">Pivot Tables</span>
+          <span class="skill-pill">Macros</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">
+          <div class="icon">⚙️</div>
+          Operations
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">Order Management</span>
+          <span class="skill-pill">Customer Claims</span>
+          <span class="skill-pill">Credit / Debit Notes</span>
+          <span class="skill-pill">Cross-functional Coordination</span>
+          <span class="skill-pill">Service Delivery</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">
+          <div class="icon">📈</div>
+          Account Management
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">Strategic Accounts</span>
+          <span class="skill-pill">KPI Reporting</span>
+          <span class="skill-pill">QBR / MBR</span>
+          <span class="skill-pill">Performance Analysis</span>
+          <span class="skill-pill">Customer Retention</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">
+          <div class="icon">🤝</div>
+          Soft Skills
+        </div>
+        <div class="skill-list">
+          <span class="skill-pill">Attention to Detail</span>
+          <span class="skill-pill">Communication & Presentation</span>
+          <span class="skill-pill">Problem-solving</span>
+          <span class="skill-pill">Customer Oriented</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <div class="section-header fade-up">
+      <div class="section-tag">Languages</div>
+      <h2 class="section-title">Communication <span class="accent">fluency</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="lang-grid fade-up">
+      <div class="lang-card">
+        <div class="lang-flag">🇫🇷</div>
+        <div class="lang-name">French</div>
+        <div class="lang-level">Native</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-name">English</div>
+        <div class="lang-level">C1 — Advanced</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:90%"></div></div>
+      </div>
+      <!-- Add more languages here if needed -->
+    </div>
+  </section>
+
+  <!-- EDUCATION (placeholder) -->
+  <section id="education" style="background: var(--bg-alt); border-top: 1px solid rgba(45,106,79,0.25); border-bottom: 1px solid rgba(45,106,79,0.25);">
+    <div class="section-header fade-up">
+      <div class="section-tag">Education</div>
+      <h2 class="section-title">Academic <span class="accent">background</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="fade-up" style="display:flex;flex-direction:column;gap:1.2rem;">
+      <div class="edu-card" style="opacity:1;">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-school">Université Clermont-Auvergne</div>
+          <div class="edu-degree">Bachelor's Degree in Economics and Political Science</div>
+          <div class="edu-period">Clermont-Ferrand, France</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid fade-up">
+      <div class="contact-left">
+        <div class="section-tag">Contact</div>
+        <h3>Let's work <span style="color:var(--teal)">together</span></h3>
+        <p style="margin-top:1rem">
+          I'm actively looking for new opportunities. Whether you have a position in mind
+          or just want to connect — my inbox is always open.
+        </p>
+      </div>
+
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:soubeyrand.max@gmail.com">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--teal)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">soubeyrand.max@gmail.com</div>
+          </div>
+        </a>
+
+        <a class="contact-link" href="tel:+33633676033">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--teal)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-value">+33 6 33 67 60 33</div>
+          </div>
+        </a>
+
+        <div class="contact-link" style="cursor:default">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--teal)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Location</div>
+            <div class="contact-link-value">Arnould Nobelstraat 40, 3000 Leuven, Belgium</div>
+          </div>
+        </div>
+
+        <!-- Add LinkedIn if you have it -->
+        <!-- <a class="contact-link" href="https://linkedin.com/in/yourprofile" target="_blank">
+          <div class="contact-link-icon">
+            <svg width="18" height="18" fill="var(--teal)" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/maxencesoubeyrand</div>
+          </div>
+        </a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed & built by <span>Maxence Soubeyrand</span> · 2026</p>
+  </footer>
+
+  <script>
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
