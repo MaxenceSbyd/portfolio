@@ -8,33 +8,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── PALETTE — 風がほどく青 / Wind Untying Blue ─────
-       #E7E9D8  Linen White    (page bg)
-       #F1F2E6  pale linen     (card bg)
-       #DDE0CF  soft linen     (section alt)
-       #C8CDB5  subtle border  (divider)
-       #0A2A26  deep teal      (primary text)
-       #4F665F  muted teal     (secondary text)
-       #03695E  Cool Jade      (primary accent)
-       #239DCA  Sky Aqua       (italic highlight)
-       #6DAF5F  Spring Herb    (hover pop)
-       #A5C6DB  Sky Soft       (light accent)
+    /* ── PALETTE — Editorial Ivory ──────────────────────
+       #FAF7F1  warm ivory     (page bg)
+       #F2EBDF  soft sand      (card bg)
+       #F5F0E5  pale sand      (section alt)
+       #E5DCC9  warm taupe     (border / divider)
+       #2D2A26  charcoal       (primary text)
+       #6B645A  warm grey      (secondary text)
+       #5C8775  muted sage     (primary accent)
+       #B59B6F  warm bronze    (subtle highlight)
+       #C9D4CB  pale sage      (light accent)
     ─────────────────────────────────────────────────── */
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #E7E9D8;
-      --bg-card:   #F1F2E6;
-      --bg-alt:    #DDE0CF;
-      --border:    #C8CDB5;
-      --border-strong: #B0B79B;
-      --text:      #0A2A26;
-      --muted:     #4F665F;
-      --sage:      #03695E;   /* Cool Jade — primary accent */
-      --sage-soft: #A5C6DB;   /* Sky Soft */
-      --bronze:    #239DCA;   /* Sky Aqua — italic highlight */
-      --pale:      #6DAF5F;   /* Spring Herb — hover pop */
+      --bg:        #FAF7F1;
+      --bg-card:   #F2EBDF;
+      --bg-alt:    #F5F0E5;
+      --border:    #E5DCC9;
+      --border-strong: #D4C9B3;
+      --text:      #2D2A26;
+      --muted:     #6B645A;
+      --sage:      #5C8775;
+      --sage-soft: #A6BDB1;
+      --bronze:    #B59B6F;
+      --pale:      #C9D4CB;
     }
 
     html { scroll-behavior: smooth; }
@@ -188,7 +187,7 @@
     .hero-name .accent {
       font-style: italic;
       font-weight: 400;
-      color: var(--bronze);
+      color: var(--sage);
     }
 
     .hero-title {
@@ -202,7 +201,7 @@
     }
 
     .hero-title em {
-      color: var(--bronze);
+      color: var(--sage);
       font-style: italic;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.15em;
@@ -387,7 +386,7 @@
 
     .section-title .accent {
       font-style: italic;
-      color: var(--bronze);
+      color: var(--sage);
       font-weight: 400;
     }
 
@@ -661,8 +660,8 @@
     }
 
     .skill-pill:hover {
-      border-color: var(--pale);
-      color: var(--pale);
+      border-color: var(--sage);
+      color: var(--sage);
     }
 
     /* ── LANGUAGES ── */
@@ -806,7 +805,7 @@
 
     .contact-left h3 .accent {
       font-style: italic;
-      color: var(--bronze);
+      color: var(--sage);
       font-weight: 400;
     }
 
