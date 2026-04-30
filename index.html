@@ -83,6 +83,12 @@
       font-style: italic;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+    }
+
     .nav-links {
       display: flex;
       gap: 2.4rem;
@@ -112,6 +118,41 @@
     }
 
     .nav-links a:hover::after { width: 100%; }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .lang-toggle button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      color: var(--muted);
+      padding: 0.3rem 0.1rem;
+      transition: color 0.3s;
+    }
+
+    .lang-toggle button:hover { color: var(--sage); }
+
+    .lang-toggle button.active {
+      color: var(--text);
+      border-bottom: 1px solid var(--sage);
+    }
+
+    .lang-toggle span.divider {
+      color: var(--border-strong);
+      user-select: none;
+    }
 
     /* ── HERO ── */
     #hero {
@@ -913,8 +954,10 @@
     @media (max-width: 600px) {
       section { padding: 5rem 5%; }
       nav { padding: 1.1rem 5%; }
+      .nav-right { gap: 1rem; }
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.7rem; letter-spacing: 0.12em; }
+      .lang-toggle { font-size: 0.66rem; letter-spacing: 0.12em; }
       .timeline { padding-left: 1.8rem; }
       .timeline-dot { left: -2.4rem; }
       .timeline-card { padding: 1.8rem 1.6rem; }
@@ -940,12 +983,19 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">Maxence S.</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+        <li><a href="#experience" data-en="Experience" data-fr="Expérience">Experience</a></li>
+        <li><a href="#skills" data-en="Skills" data-fr="Compétences">Skills</a></li>
+        <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle" aria-label="Language switcher">
+        <button data-lang="en" type="button">EN</button>
+        <span class="divider">·</span>
+        <button data-lang="fr" type="button">FR</button>
+      </div>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -961,11 +1011,15 @@
         <span class="accent">Soubeyrand</span>
       </h1>
 
-      <p class="hero-title">
+      <p class="hero-title"
+         data-en-html='Logistics &amp; Customer Service <em>Professional</em>'
+         data-fr-html='<em>Professionnel</em> en Logistique &amp; Service Client'>
         Logistics &amp; Customer Service <em>Professional</em>
       </p>
 
-      <p class="hero-desc">
+      <p class="hero-desc"
+         data-en="Managing strategic accounts across EMEA. Order optimization, performance improvement, and cross-functional execution powered by Salesforce, Oracle, and Power BI."
+         data-fr="Gestion de comptes stratégiques sur la zone EMEA. Optimisation des commandes, amélioration de la performance et coordination interfonctionnelle avec Salesforce, Oracle et Power BI.">
         Managing strategic accounts across EMEA. Order optimization, performance
         improvement, and cross-functional execution powered by Salesforce, Oracle,
         and Power BI.
@@ -982,16 +1036,16 @@
         </a>
         <span class="contact-chip">
           <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Leuven, Belgium
+          <span data-en="Leuven, Belgium" data-fr="Leuven, Belgique">Leuven, Belgium</span>
         </span>
       </div>
 
       <div class="hero-cta">
         <a class="btn btn-primary" href="#contact">
-          Get in touch
+          <span data-en="Get in touch" data-fr="Me contacter">Get in touch</span>
           <span class="arrow">→</span>
         </a>
-        <a class="btn btn-outline" href="#experience">
+        <a class="btn btn-outline" href="#experience" data-en="View experience" data-fr="Voir l&apos;expérience">
           View experience
         </a>
       </div>
@@ -1001,15 +1055,15 @@
     <div class="hero-stats">
       <div class="stat-card">
         <div class="stat-num">20</div>
-        <div class="stat-label">Strategic<br>Accounts</div>
+        <div class="stat-label" data-en-html="Strategic<br>Accounts" data-fr-html="Comptes<br>Stratégiques">Strategic<br>Accounts</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">+7%</div>
-        <div class="stat-label">Performance<br>Lift</div>
+        <div class="stat-label" data-en-html="Performance<br>Lift" data-fr-html="Gain de<br>Performance">Performance<br>Lift</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">EMEA</div>
-        <div class="stat-label">Markets<br>Coverage</div>
+        <div class="stat-label" data-en-html="Markets<br>Coverage" data-fr-html="Couverture<br>Marchés">Markets<br>Coverage</div>
       </div>
     </div>
   </section>
@@ -1017,34 +1071,43 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="section-header fade-up">
-      <div class="section-tag">About</div>
-      <h2 class="section-title">Precision meets <span class="accent">people</span>.</h2>
+      <div class="section-tag" data-en="About" data-fr="À propos">About</div>
+      <h2 class="section-title"
+          data-en-html='Precision meets <span class="accent">people</span>.'
+          data-fr-html='La précision rencontre <span class="accent">l&apos;humain</span>.'>
+        Precision meets <span class="accent">people</span>.
+      </h2>
     </div>
 
     <div class="about-grid fade-up">
       <div class="about-text">
-        <p>
+        <p data-en="I am a Logistics &amp; Customer Service professional with a track record of managing strategic accounts across EMEA markets. My strength is combining operational rigor with a genuine drive to deliver measurable results."
+           data-fr="Je suis un professionnel de la Logistique &amp; du Service Client avec une expérience solide en gestion de comptes stratégiques sur la zone EMEA. Ma force : combiner rigueur opérationnelle et envie réelle de livrer des résultats mesurables.">
           I am a Logistics &amp; Customer Service professional with a track record of
           managing strategic accounts across EMEA markets. My strength is combining
           operational rigor with a genuine drive to deliver measurable results.
         </p>
-        <p>
+        <p data-en-html='At <strong>Atmus Filtration Technologies</strong>, I run the end-to-end order lifecycle for 20 strategic accounts across the Middle East and Africa, working hand-in-hand with logistics, finance, and sales teams.'
+           data-fr-html='Chez <strong>Atmus Filtration Technologies</strong>, je gère le cycle complet des commandes pour 20 comptes stratégiques au Moyen-Orient et en Afrique, en lien direct avec les équipes logistique, finance et ventes.'>
           At <strong>Atmus Filtration Technologies</strong>, I run the end-to-end order
           lifecycle for 20 strategic accounts across the Middle East and Africa,
           working hand-in-hand with logistics, finance, and sales teams.
         </p>
-        <p>
+        <p data-en-html='At <strong>DHL Express Worldwide</strong>, I managed the Nokia global account and drove service performance from 88% to 95% through data-driven analysis, warehouse coordination, and Monthly &amp; Quarterly Business Reviews to senior management.'
+           data-fr-html='Chez <strong>DHL Express Worldwide</strong>, j&apos;ai géré le compte global Nokia et porté la performance du service de 88% à 95% grâce à l&apos;analyse de données, la coordination avec les entrepôts et la présentation de Business Reviews mensuelles &amp; trimestrielles à la direction.'>
           At <strong>DHL Express Worldwide</strong>, I managed the Nokia global account
           and drove service performance from 88% to 95% through data-driven analysis,
           warehouse coordination, and Monthly &amp; Quarterly Business Reviews to senior
           management.
         </p>
-        <p>
+        <p data-en-html='I also founded <strong>SBD Ménage</strong>, a cleaning services company, handling customer acquisition and account management across Airbnb, residential, and corporate clients.'
+           data-fr-html='J&apos;ai également fondé <strong>SBD Ménage</strong>, une entreprise de services de nettoyage, en pilotant l&apos;acquisition clients et la gestion de comptes Airbnb, particuliers et professionnels.'>
           I also founded <strong>SBD Ménage</strong>, a cleaning services company,
           handling customer acquisition and account management across Airbnb,
           residential, and corporate clients.
         </p>
-        <p>
+        <p data-en="Bachelor&apos;s degree in Economics and Political Science from Université Clermont-Auvergne. French native, English C1."
+           data-fr="Licence en Économie et Sciences Politiques à l&apos;Université Clermont-Auvergne. Français natif, Anglais C1.">
           Bachelor's degree in Economics and Political Science from Université
           Clermont-Auvergne. French native, English C1.
         </p>
@@ -1053,23 +1116,23 @@
       <div class="about-highlights">
         <div class="highlight-item">
           <div class="highlight-num">01</div>
-          <div class="highlight-title">Measurable impact</div>
-          <div class="highlight-desc">Lifted Nokia account performance from 88% to 95%</div>
+          <div class="highlight-title" data-en="Measurable impact" data-fr="Impact mesurable">Measurable impact</div>
+          <div class="highlight-desc" data-en="Lifted Nokia account performance from 88% to 95%" data-fr="Performance du compte Nokia portée de 88% à 95%">Lifted Nokia account performance from 88% to 95%</div>
         </div>
         <div class="highlight-item">
           <div class="highlight-num">02</div>
-          <div class="highlight-title">EMEA exposure</div>
-          <div class="highlight-desc">20 strategic accounts, global logistics, multicultural teams</div>
+          <div class="highlight-title" data-en="EMEA exposure" data-fr="Exposition EMEA">EMEA exposure</div>
+          <div class="highlight-desc" data-en="20 strategic accounts, global logistics, multicultural teams" data-fr="20 comptes stratégiques, logistique globale, équipes multiculturelles">20 strategic accounts, global logistics, multicultural teams</div>
         </div>
         <div class="highlight-item">
           <div class="highlight-num">03</div>
-          <div class="highlight-title">Tools-fluent</div>
-          <div class="highlight-desc">Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)</div>
+          <div class="highlight-title" data-en="Tools-fluent" data-fr="Maîtrise des outils">Tools-fluent</div>
+          <div class="highlight-desc" data-en="Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)" data-fr="Salesforce, Oracle, Power BI, Excel avancé (TCD, Macros)">Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)</div>
         </div>
         <div class="highlight-item">
           <div class="highlight-num">04</div>
-          <div class="highlight-title">Entrepreneurial</div>
-          <div class="highlight-desc">Founded and grew SBD Ménage from zero to active client base</div>
+          <div class="highlight-title" data-en="Entrepreneurial" data-fr="Esprit entrepreneurial">Entrepreneurial</div>
+          <div class="highlight-desc" data-en="Founded and grew SBD Ménage from zero to active client base" data-fr="SBD Ménage créé et développé jusqu&apos;à un portefeuille client actif">Founded and grew SBD Ménage from zero to active client base</div>
         </div>
       </div>
     </div>
@@ -1078,8 +1141,12 @@
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="section-header fade-up">
-      <div class="section-tag">Career</div>
-      <h2 class="section-title">Work <span class="accent">experience</span>.</h2>
+      <div class="section-tag" data-en="Career" data-fr="Carrière">Career</div>
+      <h2 class="section-title"
+          data-en-html='Work <span class="accent">experience</span>.'
+          data-fr-html='<span class="accent">Expérience</span> professionnelle.'>
+        Work <span class="accent">experience</span>.
+      </h2>
     </div>
 
     <div class="timeline">
@@ -1090,17 +1157,21 @@
         <div class="timeline-card">
           <div class="timeline-meta">
             <div class="timeline-company">Atmus Filtration Technologies</div>
-            <div class="timeline-period">Jan 2025 — Present</div>
+            <div class="timeline-period" data-en="Jan 2025 — Present" data-fr="Janv. 2025 — Aujourd&apos;hui">Jan 2025 — Present</div>
           </div>
-          <div class="timeline-role">Customer Support Analyst</div>
-          <p class="timeline-desc">
+          <div class="timeline-role" data-en="Customer Support Analyst" data-fr="Analyste Support Client">Customer Support Analyst</div>
+          <p class="timeline-desc"
+             data-en="Managing the end-to-end order lifecycle for 20 strategic MEA accounts, ensuring on-time delivery and high customer satisfaction. Handle customer claims, issue credit/debit notes, and collaborate with logistics, finance, and sales teams to support regional growth. Use Salesforce and Oracle to track orders, manage interactions, and drive operational efficiency."
+             data-fr="Gestion du cycle complet des commandes pour 20 comptes stratégiques MEA, en assurant la livraison à temps et la satisfaction client. Traitement des réclamations, émission de notes de crédit/débit et collaboration avec les équipes logistique, finance et ventes pour soutenir la croissance régionale. Utilisation de Salesforce et Oracle pour suivre les commandes, gérer les interactions et améliorer l&apos;efficacité opérationnelle.">
             Managing the end-to-end order lifecycle for 20 strategic MEA accounts,
             ensuring on-time delivery and high customer satisfaction. Handle customer
             claims, issue credit/debit notes, and collaborate with logistics, finance,
             and sales teams to support regional growth. Use Salesforce and Oracle to
             track orders, manage interactions, and drive operational efficiency.
           </p>
-          <div class="achievement">
+          <div class="achievement"
+               data-en-html='<span>Managing</span> <span class="num">20</span> <span>strategic MEA accounts end-to-end</span>'
+               data-fr-html='<span>Gestion de</span> <span class="num">20</span> <span>comptes stratégiques MEA de bout en bout</span>'>
             <span>Managing</span>
             <span class="num">20</span>
             <span>strategic MEA accounts end-to-end</span>
@@ -1108,10 +1179,10 @@
           <div class="timeline-tags">
             <span class="tag">Salesforce</span>
             <span class="tag">Oracle</span>
-            <span class="tag">Order Lifecycle</span>
-            <span class="tag">MEA Region</span>
-            <span class="tag">Customer Claims</span>
-            <span class="tag">Cross-functional</span>
+            <span class="tag" data-en="Order Lifecycle" data-fr="Cycle des Commandes">Order Lifecycle</span>
+            <span class="tag" data-en="MEA Region" data-fr="Région MEA">MEA Region</span>
+            <span class="tag" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
+            <span class="tag" data-en="Cross-functional" data-fr="Interfonctionnel">Cross-functional</span>
           </div>
         </div>
       </div>
@@ -1124,23 +1195,27 @@
             <div class="timeline-company">SBD Ménage</div>
             <div class="timeline-period">2024 — 2025</div>
           </div>
-          <div class="timeline-role">Entrepreneur · Business Owner</div>
-          <p class="timeline-desc">
+          <div class="timeline-role" data-en="Entrepreneur · Business Owner" data-fr="Entrepreneur · Fondateur">Entrepreneur · Business Owner</div>
+          <p class="timeline-desc"
+             data-en="Founded and grew a cleaning services company from the ground up. Owned the full commercial cycle: customer acquisition, client management, and service delivery across Airbnb, residential, and corporate buildings."
+             data-fr="Création et développement d&apos;une entreprise de services de nettoyage en partant de zéro. Maîtrise du cycle commercial complet : acquisition clients, gestion de comptes et prestation pour Airbnb, particuliers et bâtiments d&apos;entreprise.">
             Founded and grew a cleaning services company from the ground up. Owned
             the full commercial cycle: customer acquisition, client management, and
             service delivery across Airbnb, residential, and corporate buildings.
           </p>
-          <div class="achievement">
+          <div class="achievement"
+               data-en-html='<span>Built and managed a portfolio across</span> <span class="num">3</span> <span>client segments</span>'
+               data-fr-html='<span>Construction et gestion d&apos;un portefeuille sur</span> <span class="num">3</span> <span>segments clients</span>'>
             <span>Built and managed a portfolio across</span>
             <span class="num">3</span>
             <span>client segments</span>
           </div>
           <div class="timeline-tags">
-            <span class="tag">Entrepreneurship</span>
-            <span class="tag">Customer Acquisition</span>
+            <span class="tag" data-en="Entrepreneurship" data-fr="Entrepreneuriat">Entrepreneurship</span>
+            <span class="tag" data-en="Customer Acquisition" data-fr="Acquisition Clients">Customer Acquisition</span>
             <span class="tag">B2B &amp; B2C</span>
-            <span class="tag">Operations</span>
-            <span class="tag">Service Delivery</span>
+            <span class="tag" data-en="Operations" data-fr="Opérations">Operations</span>
+            <span class="tag" data-en="Service Delivery" data-fr="Prestation de Services">Service Delivery</span>
           </div>
         </div>
       </div>
@@ -1153,8 +1228,10 @@
             <div class="timeline-company">DHL Express Worldwide</div>
             <div class="timeline-period">2022 — 2023</div>
           </div>
-          <div class="timeline-role">Customer Service Support Coordinator · Account Manager</div>
-          <p class="timeline-desc">
+          <div class="timeline-role" data-en="Customer Service Support Coordinator · Account Manager" data-fr="Coordinateur Support Service Client · Responsable de Compte">Customer Service Support Coordinator · Account Manager</div>
+          <p class="timeline-desc"
+             data-en="Managed the Nokia global account, ensuring high satisfaction and retention. Conducted performance analyses to identify improvement opportunities, coordinated with warehouses to implement corrective action plans, and delivered Monthly &amp; Quarterly Business Reviews to senior management, presenting KPIs, performance trends, and improvement initiatives."
+             data-fr="Gestion du compte global Nokia, en assurant une satisfaction et une rétention élevées. Réalisation d&apos;analyses de performance pour identifier les opportunités d&apos;amélioration, coordination avec les entrepôts pour mettre en place des plans d&apos;action correctifs, et présentation de Business Reviews mensuelles &amp; trimestrielles à la direction (KPI, tendances, initiatives).">
             Managed the Nokia global account, ensuring high satisfaction and
             retention. Conducted performance analyses to identify improvement
             opportunities, coordinated with warehouses to implement corrective
@@ -1162,17 +1239,19 @@
             senior management, presenting KPIs, performance trends, and improvement
             initiatives.
           </p>
-          <div class="achievement">
+          <div class="achievement"
+               data-en-html='<span>Lifted Nokia service performance from</span> <span class="num">88% → 95%</span>'
+               data-fr-html='<span>Performance du service Nokia portée de</span> <span class="num">88% → 95%</span>'>
             <span>Lifted Nokia service performance from</span>
             <span class="num">88% → 95%</span>
           </div>
           <div class="timeline-tags">
-            <span class="tag">Account Management</span>
+            <span class="tag" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</span>
             <span class="tag">Nokia</span>
             <span class="tag">QBR / MBR</span>
-            <span class="tag">Performance Analysis</span>
-            <span class="tag">KPI Reporting</span>
-            <span class="tag">Warehouse Coordination</span>
+            <span class="tag" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
+            <span class="tag" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
+            <span class="tag" data-en="Warehouse Coordination" data-fr="Coordination Entrepôts">Warehouse Coordination</span>
           </div>
         </div>
       </div>
@@ -1183,56 +1262,60 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="section-header fade-up">
-      <div class="section-tag">Expertise</div>
-      <h2 class="section-title">Skills &amp; <span class="accent">tools</span>.</h2>
+      <div class="section-tag" data-en="Expertise" data-fr="Expertise">Expertise</div>
+      <h2 class="section-title"
+          data-en-html='Skills &amp; <span class="accent">tools</span>.'
+          data-fr-html='Compétences &amp; <span class="accent">outils</span>.'>
+        Skills &amp; <span class="accent">tools</span>.
+      </h2>
     </div>
 
     <div class="skills-grid fade-up">
       <div class="skill-category">
         <span class="skill-cat-num">01.</span>
-        <div class="skill-cat-title">Technical Tools</div>
+        <div class="skill-cat-title" data-en="Technical Tools" data-fr="Outils Techniques">Technical Tools</div>
         <div class="skill-list">
           <span class="skill-pill">Salesforce</span>
           <span class="skill-pill">Oracle</span>
           <span class="skill-pill">Power BI</span>
-          <span class="skill-pill">Advanced Excel</span>
-          <span class="skill-pill">Pivot Tables</span>
+          <span class="skill-pill" data-en="Advanced Excel" data-fr="Excel Avancé">Advanced Excel</span>
+          <span class="skill-pill" data-en="Pivot Tables" data-fr="Tableaux Croisés">Pivot Tables</span>
           <span class="skill-pill">Macros</span>
         </div>
       </div>
 
       <div class="skill-category">
         <span class="skill-cat-num">02.</span>
-        <div class="skill-cat-title">Operations</div>
+        <div class="skill-cat-title" data-en="Operations" data-fr="Opérations">Operations</div>
         <div class="skill-list">
-          <span class="skill-pill">Order Management</span>
-          <span class="skill-pill">Customer Claims</span>
-          <span class="skill-pill">Credit / Debit Notes</span>
-          <span class="skill-pill">Cross-functional Coordination</span>
-          <span class="skill-pill">Service Delivery</span>
+          <span class="skill-pill" data-en="Order Management" data-fr="Gestion des Commandes">Order Management</span>
+          <span class="skill-pill" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
+          <span class="skill-pill" data-en="Credit / Debit Notes" data-fr="Notes de Crédit / Débit">Credit / Debit Notes</span>
+          <span class="skill-pill" data-en="Cross-functional Coordination" data-fr="Coordination Interfonctionnelle">Cross-functional Coordination</span>
+          <span class="skill-pill" data-en="Service Delivery" data-fr="Prestation de Services">Service Delivery</span>
         </div>
       </div>
 
       <div class="skill-category">
         <span class="skill-cat-num">03.</span>
-        <div class="skill-cat-title">Account Management</div>
+        <div class="skill-cat-title" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</div>
         <div class="skill-list">
-          <span class="skill-pill">Strategic Accounts</span>
-          <span class="skill-pill">KPI Reporting</span>
+          <span class="skill-pill" data-en="Strategic Accounts" data-fr="Comptes Stratégiques">Strategic Accounts</span>
+          <span class="skill-pill" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
           <span class="skill-pill">QBR / MBR</span>
-          <span class="skill-pill">Performance Analysis</span>
-          <span class="skill-pill">Customer Retention</span>
+          <span class="skill-pill" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
+          <span class="skill-pill" data-en="Customer Retention" data-fr="Rétention Clients">Customer Retention</span>
         </div>
       </div>
 
       <div class="skill-category">
         <span class="skill-cat-num">04.</span>
-        <div class="skill-cat-title">Soft Skills</div>
+        <div class="skill-cat-title" data-en="Soft Skills" data-fr="Soft Skills">Soft Skills</div>
         <div class="skill-list">
-          <span class="skill-pill">Attention to Detail</span>
-          <span class="skill-pill">Communication &amp; Presentation</span>
-          <span class="skill-pill">Problem-solving</span>
-          <span class="skill-pill">Customer Oriented</span>
+          <span class="skill-pill" data-en="Attention to Detail" data-fr="Souci du Détail">Attention to Detail</span>
+          <span class="skill-pill" data-en="Communication &amp; Presentation" data-fr="Communication &amp; Présentation">Communication &amp; Presentation</span>
+          <span class="skill-pill" data-en="Problem-solving" data-fr="Résolution de Problèmes">Problem-solving</span>
+          <span class="skill-pill" data-en="Customer Oriented" data-fr="Orienté Client">Customer Oriented</span>
         </div>
       </div>
     </div>
@@ -1241,21 +1324,25 @@
   <!-- LANGUAGES -->
   <section id="languages">
     <div class="section-header fade-up">
-      <div class="section-tag">Languages</div>
-      <h2 class="section-title">Communication <span class="accent">fluency</span>.</h2>
+      <div class="section-tag" data-en="Languages" data-fr="Langues">Languages</div>
+      <h2 class="section-title"
+          data-en-html='Communication <span class="accent">fluency</span>.'
+          data-fr-html='<span class="accent">Maîtrise</span> linguistique.'>
+        Communication <span class="accent">fluency</span>.
+      </h2>
     </div>
 
     <div class="lang-grid fade-up">
       <div class="lang-card">
         <div class="lang-flag">FR</div>
-        <div class="lang-name">French</div>
-        <div class="lang-level">Native</div>
+        <div class="lang-name" data-en="French" data-fr="Français">French</div>
+        <div class="lang-level" data-en="Native" data-fr="Natif">Native</div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
       </div>
       <div class="lang-card">
         <div class="lang-flag">EN</div>
-        <div class="lang-name">English</div>
-        <div class="lang-level">C1 — Advanced</div>
+        <div class="lang-name" data-en="English" data-fr="Anglais">English</div>
+        <div class="lang-level" data-en="C1 — Advanced" data-fr="C1 — Avancé">C1 — Advanced</div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width:90%"></div></div>
       </div>
     </div>
@@ -1264,8 +1351,12 @@
   <!-- EDUCATION -->
   <section id="education" style="background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="section-header fade-up">
-      <div class="section-tag">Education</div>
-      <h2 class="section-title">Academic <span class="accent">background</span>.</h2>
+      <div class="section-tag" data-en="Education" data-fr="Formation">Education</div>
+      <h2 class="section-title"
+          data-en-html='Academic <span class="accent">background</span>.'
+          data-fr-html='Parcours <span class="accent">académique</span>.'>
+        Academic <span class="accent">background</span>.
+      </h2>
     </div>
 
     <div class="fade-up" style="display:flex; flex-direction:column; gap:1.4rem;">
@@ -1273,7 +1364,7 @@
         <div class="edu-num">01</div>
         <div>
           <div class="edu-school">Université Clermont-Auvergne</div>
-          <div class="edu-degree">Bachelor's Degree in Economics and Political Science</div>
+          <div class="edu-degree" data-en="Bachelor&apos;s Degree in Economics and Political Science" data-fr="Licence en Économie et Sciences Politiques">Bachelor's Degree in Economics and Political Science</div>
           <div class="edu-period">Clermont-Ferrand, France</div>
         </div>
       </div>
@@ -1281,8 +1372,8 @@
       <div class="edu-card">
         <div class="edu-num">02</div>
         <div>
-          <div class="edu-school">Language Stay — Toronto, Canada</div>
-          <div class="edu-degree">Year-long English immersion</div>
+          <div class="edu-school" data-en="Language Stay — Toronto, Canada" data-fr="Séjour Linguistique — Toronto, Canada">Language Stay — Toronto, Canada</div>
+          <div class="edu-degree" data-en="Year-long English immersion" data-fr="Immersion anglophone d&apos;un an">Year-long English immersion</div>
           <div class="edu-period">2016 — 2017</div>
         </div>
       </div>
@@ -1293,9 +1384,11 @@
   <section id="contact">
     <div class="contact-grid fade-up">
       <div class="contact-left">
-        <div class="section-tag">Contact</div>
-        <h3>Let's work <span class="accent">together</span>.</h3>
-        <p>
+        <div class="section-tag" data-en="Contact" data-fr="Contact">Contact</div>
+        <h3 data-en-html='Let&apos;s work <span class="accent">together</span>.'
+            data-fr-html='Travaillons <span class="accent">ensemble</span>.'>Let's work <span class="accent">together</span>.</h3>
+        <p data-en="I&apos;m actively looking for new opportunities. Whether you have a position in mind or just want to connect — my inbox is always open."
+           data-fr="Je suis activement à la recherche de nouvelles opportunités. Que vous ayez un poste à pourvoir ou simplement envie d&apos;échanger, ma boîte est toujours ouverte.">
           I'm actively looking for new opportunities. Whether you have a position
           in mind or just want to connect — my inbox is always open.
         </p>
@@ -1318,7 +1411,7 @@
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div class="contact-link-text">
-            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-label" data-en="Phone" data-fr="Téléphone">Phone</div>
             <div class="contact-link-value">+33 6 33 67 60 33</div>
           </div>
           <span class="arrow">→</span>
@@ -1329,8 +1422,8 @@
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div class="contact-link-text">
-            <div class="contact-link-label">Location</div>
-            <div class="contact-link-value">Arnould Nobelstraat 40, 3000 Leuven, Belgium</div>
+            <div class="contact-link-label" data-en="Location" data-fr="Localisation">Location</div>
+            <div class="contact-link-value" data-en="Arnould Nobelstraat 40, 3000 Leuven, Belgium" data-fr="Arnould Nobelstraat 40, 3000 Leuven, Belgique">Arnould Nobelstraat 40, 3000 Leuven, Belgium</div>
           </div>
         </div>
       </div>
@@ -1339,11 +1432,46 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Designed &amp; built by <span>Maxence Soubeyrand</span> · 2026</p>
+    <p data-en-html='Designed &amp; built by <span>Maxence Soubeyrand</span> · 2026'
+       data-fr-html='Conçu &amp; développé par <span>Maxence Soubeyrand</span> · 2026'>Designed &amp; built by <span>Maxence Soubeyrand</span> · 2026</p>
   </footer>
 
   <script>
-    // Fade-up on scroll
+    // ── Language switcher ─────────────────────────────
+    function setLang(lang) {
+      // Plain-text translations
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const v = el.dataset[lang];
+        if (typeof v === 'string') el.textContent = v;
+      });
+      // HTML translations (mixed-content elements)
+      document.querySelectorAll('[data-en-html]').forEach(el => {
+        const key = lang + 'Html';
+        const v = el.dataset[key];
+        if (typeof v === 'string') el.innerHTML = v;
+      });
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+      // Update toggle UI
+      document.querySelectorAll('.lang-toggle button').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+    }
+
+    // Initialize: saved choice > browser default > 'en'
+    (function initLang() {
+      let saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      const browser = (navigator.language || 'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+      setLang(saved === 'fr' || saved === 'en' ? saved : browser);
+    })();
+
+    // Wire up toggle buttons
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.addEventListener('click', () => setLang(b.dataset.lang));
+    });
+
+    // ── Fade-up on scroll ────────────────────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
