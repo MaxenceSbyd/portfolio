@@ -6,47 +6,45 @@
   <title>Maxence Soubeyrand — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* ── PALETTE — Editorial Ivory ──────────────────────
-       #FAF7F1  warm ivory     (page bg)
-       #F2EBDF  soft sand      (card bg)
-       #F5F0E5  pale sand      (section alt)
-       #E5DCC9  warm taupe     (border / divider)
-       #2D2A26  charcoal       (primary text)
-       #6B645A  warm grey      (secondary text)
-       #5C8775  muted sage     (primary accent)
-       #B59B6F  warm bronze    (subtle highlight)
-       #C9D4CB  pale sage      (light accent)
+    /* ── PALETTE — Crumb Club ────────────────────────────
+       #F8F7F4  near-white     (page bg)
+       #FFFFFF  pure white     (card bg)
+       #ECEAE5  warm stone     (section alt)
+       #D5D0C8  warm grey      (border)
+       #1C1007  dark brown     (primary text)
+       #7D5030  caramel brown  (secondary text)
+       #2235F0  cobalt blue    (primary accent)
+       #9B6A40  warm bronze    (highlight)
     ─────────────────────────────────────────────────── */
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:            #D0E8FD;
-      --bg-card:       #FDFBF5;
-      --bg-alt:        #F5EAD1;
-      --border:        #C2D8EE;
-      --border-strong: #96BCD8;
-      --text:          #0D1840;
-      --muted:         #4A5E8A;
-      --sage:          #192560;
-      --sage-soft:     #3B5BA8;
-      --bronze:        #C4A870;
-      --pale:          #EBF4FD;
+      --bg:            #F8F7F4;
+      --bg-card:       #FFFFFF;
+      --bg-alt:        #ECEAE5;
+      --border:        #D5D0C8;
+      --border-strong: #B5AFA5;
+      --text:          #1C1007;
+      --muted:         #7D5030;
+      --sage:          #2235F0;
+      --sage-soft:     #5060F8;
+      --bronze:        #9B6A40;
+      --pale:          #E8E4DC;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 400;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
-      letter-spacing: 0.005em;
+      letter-spacing: 0.01em;
       overflow-x: hidden;
-      font-feature-settings: "ss01", "cv11";
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -68,7 +66,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.4rem 6%;
-      background: rgba(208, 232, 253, 0.92);
+      background: rgba(248, 247, 244, 0.93);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -217,7 +215,7 @@
     }
 
     .hero-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: clamp(3.8rem, 9vw, 7.5rem);
       font-weight: 400;
       line-height: 0.98;
@@ -236,7 +234,7 @@
     }
 
     .hero-title {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       font-weight: 300;
       font-size: clamp(1rem, 1.8vw, 1.2rem);
       color: var(--muted);
@@ -295,7 +293,7 @@
     .contact-chip:hover {
       border-color: var(--sage);
       color: var(--sage);
-      background: rgba(25, 37, 96, 0.06);
+      background: rgba(34, 53, 240, 0.07);
       transform: translateY(-3px);
     }
 
@@ -390,7 +388,7 @@
     }
 
     .stat-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 2.6rem;
       font-weight: 400;
       color: var(--text);
@@ -441,7 +439,7 @@
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: clamp(2.4rem, 5.5vw, 3.8rem);
       font-weight: 400;
       letter-spacing: 0.005em;
@@ -508,7 +506,7 @@
     }
 
     .highlight-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.2rem;
       color: var(--sage);
       margin-bottom: 1rem;
@@ -517,7 +515,7 @@
     }
 
     .highlight-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.25rem;
       font-weight: 500;
       color: var(--text);
@@ -615,7 +613,7 @@
     }
 
     .timeline-company {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: var(--text);
@@ -633,7 +631,7 @@
     }
 
     .timeline-role {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.1rem;
       color: var(--sage);
       font-weight: 400;
@@ -664,7 +662,7 @@
     }
 
     .achievement .num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-weight: 400;
       color: var(--sage);
       font-size: 1.5rem;
@@ -713,7 +711,7 @@
     }
 
     .skill-cat-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: var(--text);
@@ -722,7 +720,7 @@
     }
 
     .skill-cat-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.05rem;
       color: var(--sage);
       margin-bottom: 1.4rem;
@@ -775,7 +773,7 @@
     }
 
     .lang-flag {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.05rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -785,7 +783,7 @@
     }
 
     .lang-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-weight: 500;
       font-size: 2rem;
       color: var(--text);
@@ -833,7 +831,7 @@
     }
 
     .edu-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 3.2rem;
       color: var(--sage);
       font-weight: 400;
@@ -842,7 +840,7 @@
     }
 
     .edu-school {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-weight: 500;
       font-size: 1.4rem;
       color: var(--text);
@@ -850,7 +848,7 @@
     }
 
     .edu-degree {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.05rem;
       color: var(--sage);
       margin-top: 0.3rem;
@@ -882,7 +880,7 @@
     }
 
     .contact-left h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
       font-weight: 300;
       margin-top: 1.2rem;
@@ -949,7 +947,7 @@
     }
 
     .contact-link-value {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 1.15rem;
       color: var(--text);
       font-weight: 400;
@@ -1020,7 +1018,7 @@
       .cursor-dot {
         position: fixed;
         width: 6px; height: 6px;
-        background: #192560;
+        background: #2235F0;
         border-radius: 0;
         pointer-events: none;
         z-index: 9999;
@@ -1033,7 +1031,7 @@
       .cursor-ring {
         position: fixed;
         width: 28px; height: 28px;
-        border: 1.5px solid rgba(25, 37, 96, 0.38);
+        border: 1.5px solid rgba(34, 53, 240, 0.35);
         border-radius: 0;
         pointer-events: none;
         z-index: 9998;
@@ -1050,7 +1048,7 @@
 
       .cursor-ring.is-hovering {
         width: 44px; height: 44px;
-        border-color: rgba(25, 37, 96, 0.72);
+        border-color: rgba(34, 53, 240, 0.72);
       }
     }
 
