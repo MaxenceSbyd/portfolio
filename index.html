@@ -591,6 +591,29 @@
       margin-bottom: 0.4rem;
     }
 
+    .timeline-logo {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      opacity: 0.45;
+      filter: grayscale(100%) contrast(0.9);
+      transition: opacity 0.4s ease, filter 0.4s ease;
+    }
+
+    .timeline-card:hover .timeline-logo {
+      opacity: 1;
+      filter: grayscale(0%) contrast(1);
+    }
+
+    .timeline-logo img,
+    .timeline-logo svg {
+      height: 100%;
+      width: auto;
+      max-width: 100px;
+      object-fit: contain;
+    }
+
     .timeline-company {
       font-family: 'Italiana', serif;
       font-size: 1.5rem;
@@ -1232,8 +1255,13 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-meta">
-            <div class="timeline-company">Atmus Filtration Technologies</div>
-            <div class="timeline-period" data-en="Jan 2025 — Present" data-fr="Janv. 2025 — Aujourd&apos;hui">Jan 2025 — Present</div>
+            <div>
+              <div class="timeline-company">Atmus Filtration Technologies</div>
+              <div class="timeline-period" data-en="Jan 2025 — Present" data-fr="Janv. 2025 — Aujourd&apos;hui">Jan 2025 — Present</div>
+            </div>
+            <div class="timeline-logo">
+              <img src="logos/atmus.jpg" alt="Atmus Filtration Technologies">
+            </div>
           </div>
           <div class="timeline-role" data-en="Customer Support Analyst" data-fr="Analyste Support Client">Customer Support Analyst</div>
           <p class="timeline-desc"
@@ -1268,8 +1296,13 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-meta">
-            <div class="timeline-company">SBD Ménage</div>
-            <div class="timeline-period">2024 — 2025</div>
+            <div>
+              <div class="timeline-company">SBD Ménage</div>
+              <div class="timeline-period">2024 — 2025</div>
+            </div>
+            <div class="timeline-logo">
+              <img src="logos/sbd.svg" alt="SBD Ménage">
+            </div>
           </div>
           <div class="timeline-role" data-en="Entrepreneur · Business Owner" data-fr="Entrepreneur · Fondateur">Entrepreneur · Business Owner</div>
           <p class="timeline-desc"
@@ -1301,8 +1334,13 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-meta">
-            <div class="timeline-company">DHL Express Worldwide</div>
-            <div class="timeline-period">2022 — 2023</div>
+            <div>
+              <div class="timeline-company">DHL Express Worldwide</div>
+              <div class="timeline-period">2022 — 2023</div>
+            </div>
+            <div class="timeline-logo">
+              <img src="logos/dhl.svg" alt="DHL Express">
+            </div>
           </div>
           <div class="timeline-role" data-en="Customer Service Support Coordinator · Account Manager" data-fr="Coordinateur Support Service Client · Responsable de Compte">Customer Service Support Coordinator · Account Manager</div>
           <p class="timeline-desc"
