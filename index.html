@@ -6,7 +6,7 @@
   <title>Maxence Soubeyrand — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Italiana&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     /* ── PALETTE — Editorial Ivory ──────────────────────
        #FAF7F1  warm ivory     (page bg)
@@ -23,17 +23,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #FAF7F1;
-      --bg-card:   #F2EBDF;
-      --bg-alt:    #F5F0E5;
-      --border:    #E5DCC9;
-      --border-strong: #D4C9B3;
-      --text:      #2D2A26;
-      --muted:     #6B645A;
-      --sage:      #5C8775;
-      --sage-soft: #A6BDB1;
-      --bronze:    #B59B6F;
-      --pale:      #C9D4CB;
+      --bg:        #FFFDF5;
+      --bg-card:   #FFF8E1;
+      --bg-alt:    #FFF3CC;
+      --border:    #FFE8B0;
+      --border-strong: #FFD080;
+      --text:      #2C1805;
+      --muted:     #8B6535;
+      --sage:      #FFC065;
+      --sage-soft: #FFD699;
+      --bronze:    #A4D0F1;
+      --pale:      #FFE4A8;
     }
 
     html { scroll-behavior: smooth; }
@@ -51,7 +51,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    ::selection { background: var(--sage); color: var(--bg); }
+    ::selection { background: var(--sage); color: var(--text); }
 
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 6px; }
@@ -217,7 +217,7 @@
     }
 
     .hero-name {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3.8rem, 9vw, 7.5rem);
       font-weight: 400;
       line-height: 0.98;
@@ -295,7 +295,7 @@
     .contact-chip:hover {
       border-color: var(--sage);
       color: var(--sage);
-      background: rgba(92, 135, 117, 0.07);
+      background: rgba(255, 192, 101, 0.1);
       transform: translateY(-3px);
     }
 
@@ -342,7 +342,7 @@
 
     .btn-primary:hover {
       background-position: left center;
-      color: var(--bg);
+      color: var(--text);
     }
 
     .btn-outline {
@@ -390,7 +390,7 @@
     }
 
     .stat-num {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 2.6rem;
       font-weight: 400;
       color: var(--text);
@@ -441,7 +441,7 @@
     }
 
     .section-title {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.4rem, 5.5vw, 3.8rem);
       font-weight: 400;
       letter-spacing: 0.005em;
@@ -508,7 +508,7 @@
     }
 
     .highlight-num {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
       color: var(--sage);
       margin-bottom: 1rem;
@@ -517,7 +517,7 @@
     }
 
     .highlight-title {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
       font-weight: 500;
       color: var(--text);
@@ -615,7 +615,7 @@
     }
 
     .timeline-company {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: var(--text);
@@ -633,7 +633,7 @@
     }
 
     .timeline-role {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem;
       color: var(--sage);
       font-weight: 400;
@@ -664,7 +664,7 @@
     }
 
     .achievement .num {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 400;
       color: var(--sage);
       font-size: 1.5rem;
@@ -713,7 +713,7 @@
     }
 
     .skill-cat-title {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: var(--text);
@@ -722,7 +722,7 @@
     }
 
     .skill-cat-num {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem;
       color: var(--sage);
       margin-bottom: 1.4rem;
@@ -775,7 +775,7 @@
     }
 
     .lang-flag {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -785,7 +785,7 @@
     }
 
     .lang-name {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
       font-size: 2rem;
       color: var(--text);
@@ -833,7 +833,7 @@
     }
 
     .edu-num {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 3.2rem;
       color: var(--sage);
       font-weight: 400;
@@ -842,7 +842,7 @@
     }
 
     .edu-school {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
       font-size: 1.4rem;
       color: var(--text);
@@ -850,7 +850,7 @@
     }
 
     .edu-degree {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem;
       color: var(--sage);
       margin-top: 0.3rem;
@@ -882,7 +882,7 @@
     }
 
     .contact-left h3 {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
       font-weight: 300;
       margin-top: 1.2rem;
@@ -949,7 +949,7 @@
     }
 
     .contact-link-value {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.15rem;
       color: var(--text);
       font-weight: 400;
@@ -1033,7 +1033,7 @@
       .cursor-ring {
         position: fixed;
         width: 30px; height: 30px;
-        border: 1px solid rgba(92, 135, 117, 0.4);
+        border: 1px solid rgba(255, 192, 101, 0.45);
         border-radius: 50%;
         pointer-events: none;
         z-index: 9998;
@@ -1046,7 +1046,7 @@
       .cursor-dot.is-hovering { width: 10px; height: 10px; }
       .cursor-ring.is-hovering {
         width: 50px; height: 50px;
-        border-color: rgba(92, 135, 117, 0.65);
+        border-color: rgba(255, 192, 101, 0.75);
       }
     }
 
@@ -1153,12 +1153,12 @@
     <!-- DECORATIVE STATS -->
     <div class="hero-stats">
       <div class="stat-card">
-        <div class="stat-num">20</div>
-        <div class="stat-label" data-en-html="Strategic<br>Accounts" data-fr-html="Comptes<br>Stratégiques">Strategic<br>Accounts</div>
+        <div class="stat-num" style="font-size:1.7rem;letter-spacing:0.06em" data-en="Client" data-fr="Client">Client</div>
+        <div class="stat-label" data-en="Oriented" data-fr="Orienté">Oriented</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">+7%</div>
-        <div class="stat-label" data-en-html="Performance<br>Lift" data-fr-html="Gain de<br>Performance">Performance<br>Lift</div>
+        <div class="stat-num" style="font-size:1.7rem;letter-spacing:0.06em" data-en="Detail" data-fr="Précision">Detail</div>
+        <div class="stat-label" data-en="Driven" data-fr="Rigueur">Driven</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">EMEA</div>
@@ -1291,45 +1291,7 @@
         </div>
       </div>
 
-      <!-- Role 2: SBD Ménage -->
-      <div class="timeline-item fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-meta">
-            <div>
-              <div class="timeline-company">SBD Ménage</div>
-              <div class="timeline-period">2024 — 2025</div>
-            </div>
-            <div class="timeline-logo">
-              <img src="logos/sbd.svg" alt="SBD Ménage">
-            </div>
-          </div>
-          <div class="timeline-role" data-en="Entrepreneur · Business Owner" data-fr="Entrepreneur · Fondateur">Entrepreneur · Business Owner</div>
-          <p class="timeline-desc"
-             data-en="Founded and grew a cleaning services company from the ground up. Owned the full commercial cycle: customer acquisition, client management, and service delivery across Airbnb, residential, and corporate buildings."
-             data-fr="Création et développement d&apos;une entreprise de services de nettoyage en partant de zéro. Maîtrise du cycle commercial complet : acquisition clients, gestion de comptes et prestation pour Airbnb, particuliers et bâtiments d&apos;entreprise.">
-            Founded and grew a cleaning services company from the ground up. Owned
-            the full commercial cycle: customer acquisition, client management, and
-            service delivery across Airbnb, residential, and corporate buildings.
-          </p>
-          <div class="achievement"
-               data-en-html='<span>Built and managed a portfolio across</span> <span class="num">3</span> <span>client segments</span>'
-               data-fr-html='<span>Construction et gestion d&apos;un portefeuille sur</span> <span class="num">3</span> <span>segments clients</span>'>
-            <span>Built and managed a portfolio across</span>
-            <span class="num">3</span>
-            <span>client segments</span>
-          </div>
-          <div class="timeline-tags">
-            <span class="tag" data-en="Entrepreneurship" data-fr="Entrepreneuriat">Entrepreneurship</span>
-            <span class="tag" data-en="Customer Acquisition" data-fr="Acquisition Clients">Customer Acquisition</span>
-            <span class="tag">B2B &amp; B2C</span>
-            <span class="tag" data-en="Operations" data-fr="Opérations">Operations</span>
-            <span class="tag" data-en="Service Delivery" data-fr="Prestation de Services">Service Delivery</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Role 3: DHL -->
+      <!-- Role 2: DHL -->
       <div class="timeline-item fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
