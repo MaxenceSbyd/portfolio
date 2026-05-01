@@ -23,17 +23,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #FFFDF5;
-      --bg-card:   #FFF8E1;
-      --bg-alt:    #FFF3CC;
-      --border:    #FFE8B0;
-      --border-strong: #FFD080;
-      --text:      #2C1805;
-      --muted:     #8B6535;
-      --sage:      #FFC065;
-      --sage-soft: #FFD699;
-      --bronze:    #A4D0F1;
-      --pale:      #FFE4A8;
+      --bg:            #D0E8FD;
+      --bg-card:       #FDFBF5;
+      --bg-alt:        #F5EAD1;
+      --border:        #C2D8EE;
+      --border-strong: #96BCD8;
+      --text:          #0D1840;
+      --muted:         #4A5E8A;
+      --sage:          #192560;
+      --sage-soft:     #3B5BA8;
+      --bronze:        #C4A870;
+      --pale:          #EBF4FD;
     }
 
     html { scroll-behavior: smooth; }
@@ -68,7 +68,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.4rem 6%;
-      background: rgba(250, 247, 241, 0.85);
+      background: rgba(208, 232, 253, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -295,7 +295,7 @@
     .contact-chip:hover {
       border-color: var(--sage);
       color: var(--sage);
-      background: rgba(255, 192, 101, 0.1);
+      background: rgba(25, 37, 96, 0.06);
       transform: translateY(-3px);
     }
 
@@ -342,7 +342,7 @@
 
     .btn-primary:hover {
       background-position: left center;
-      color: var(--text);
+      color: var(--bg);
     }
 
     .btn-outline {
@@ -1013,40 +1013,44 @@
       .edu-num { font-size: 2.2rem; }
     }
 
-    /* ── CUSTOM CURSOR ── */
+    /* ── CUSTOM CURSOR — diamond ── */
     @media (hover: hover) and (pointer: fine) {
       * { cursor: none !important; }
 
       .cursor-dot {
         position: fixed;
         width: 6px; height: 6px;
-        background: var(--sage);
-        border-radius: 50%;
+        background: #192560;
+        border-radius: 0;
         pointer-events: none;
         z-index: 9999;
         left: 0; top: 0;
-        transform: translate(-50%, -50%);
-        transition: width 0.2s ease, height 0.2s ease;
+        transform: translate(-50%, -50%) rotate(45deg);
+        transition: width 0.18s ease, height 0.18s ease, opacity 0.2s;
         will-change: left, top;
       }
 
       .cursor-ring {
         position: fixed;
-        width: 30px; height: 30px;
-        border: 1px solid rgba(255, 192, 101, 0.45);
-        border-radius: 50%;
+        width: 28px; height: 28px;
+        border: 1.5px solid rgba(25, 37, 96, 0.38);
+        border-radius: 0;
         pointer-events: none;
         z-index: 9998;
         left: 0; top: 0;
-        transform: translate(-50%, -50%);
-        transition: width 0.4s ease, height 0.4s ease, border-color 0.3s ease;
+        transform: translate(-50%, -50%) rotate(45deg);
+        transition: width 0.4s ease, height 0.4s ease,
+                    border-color 0.3s ease, opacity 0.3s;
         will-change: left, top;
       }
 
-      .cursor-dot.is-hovering { width: 10px; height: 10px; }
+      .cursor-dot.is-hovering {
+        width: 9px; height: 9px;
+      }
+
       .cursor-ring.is-hovering {
-        width: 50px; height: 50px;
-        border-color: rgba(255, 192, 101, 0.75);
+        width: 44px; height: 44px;
+        border-color: rgba(25, 37, 96, 0.72);
       }
     }
 
