@@ -7,1091 +7,204 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="design-system.css" />
   <style>
-    /* ── PALETTE — Crumb Club ────────────────────────────
-       #F8F7F4  near-white     (page bg)
-       #FFFFFF  pure white     (card bg)
-       #ECEAE5  warm stone     (section alt)
-       #D5D0C8  warm grey      (border)
-       #1C1007  dark brown     (primary text)
-       #7D5030  caramel brown  (secondary text)
-       #2235F0  cobalt blue    (primary accent)
-       #9B6A40  warm bronze    (highlight)
-    ─────────────────────────────────────────────────── */
+    /* ── PAGE-SPECIFIC LAYOUT ──────────────────────────── */
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:            #F8F7F4;
-      --bg-card:       #FFFFFF;
-      --bg-alt:        #ECEAE5;
-      --border:        #D5D0C8;
-      --border-strong: #B5AFA5;
-      --text:          #1C1007;
-      --muted:         #7D5030;
-      --sage:          #2235F0;
-      --sage-soft:     #5060F8;
-      --bronze:        #9B6A40;
-      --pale:          #E8E4DC;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 400;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    ::selection { background: var(--sage); color: var(--text); }
-
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--bronze); }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 6%;
-      background: rgba(248, 247, 244, 0.93);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Allura', cursive;
-      font-weight: 400;
-      font-size: 1.85rem;
-      color: var(--text);
-      letter-spacing: 0;
-      line-height: 1;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2.4rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.4rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-      position: relative;
-    }
-
-    .nav-links a:hover { color: var(--sage); }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      left: 50%; bottom: -4px;
-      width: 0; height: 1px;
-      background: var(--sage);
-      transform: translateX(-50%);
-      transition: width 0.35s cubic-bezier(0.76, 0, 0.24, 1);
-    }
-
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ── LANG TOGGLE ── */
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .lang-toggle button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font: inherit;
-      letter-spacing: inherit;
-      text-transform: inherit;
-      color: var(--muted);
-      padding: 0.3rem 0.1rem;
-      transition: color 0.3s;
-    }
-
-    .lang-toggle button:hover { color: var(--sage); }
-
-    .lang-toggle button.active {
-      color: var(--text);
-      border-bottom: 1px solid var(--sage);
-    }
-
-    .lang-toggle span.divider {
-      color: var(--border-strong);
-      user-select: none;
-    }
-
-    /* ── HERO ── */
+    /* Hero */
     #hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 88px 6% 0;
+      padding: var(--nav-height) var(--page-gutter) 0;
       position: relative;
       overflow: hidden;
     }
-
     .hero-bg-circle {
       position: absolute;
-      width: 700px;
-      height: 700px;
-      border: 1px solid var(--border-strong);
+      width: 700px; height: 700px;
+      border: 1px solid var(--color-border-md);
       border-radius: 50%;
-      right: -200px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .hero-bg-circle-2 {
-      position: absolute;
-      width: 480px;
-      height: 480px;
-      border: 1px dashed var(--border-strong);
-      border-radius: 50%;
-      right: -80px;
-      top: 50%;
+      right: -200px; top: 50%;
       transform: translateY(-50%);
       opacity: 0.4;
       pointer-events: none;
     }
-
+    .hero-bg-circle-2 {
+      position: absolute;
+      width: 460px; height: 460px;
+      border: 1px dashed var(--color-border-md);
+      border-radius: 50%;
+      right: -60px; top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.3;
+      pointer-events: none;
+    }
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 760px;
+      max-width: 780px;
     }
-
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.7rem;
-      font-size: 0.7rem;
-      color: var(--muted);
-      font-weight: 400;
-      letter-spacing: 0.25em;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-widest);
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-8);
     }
-
     .hero-eyebrow::before {
       content: '';
-      width: 36px;
-      height: 1px;
-      background: var(--sage);
+      width: 36px; height: 1px;
+      background: var(--color-accent);
     }
-
     .hero-name {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(3.8rem, 9vw, 7.5rem);
-      font-weight: 400;
-      line-height: 0.98;
-      letter-spacing: 0.01em;
-      color: var(--text);
-      margin-bottom: 1.4rem;
+      font-family: var(--font-display);
+      font-size: var(--text-5xl);
+      font-weight: var(--fw-regular);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-normal);
+      color: var(--color-text);
+      margin-bottom: var(--space-6);
     }
-
-    .hero-name .accent {
-      font-family: 'Allura', cursive;
-      font-weight: 400;
-      color: var(--sage);
-      font-size: 0.95em;
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    .hero-title {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 300;
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-weight: var(--fw-light);
       font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: var(--muted);
+      color: var(--color-text-muted);
       letter-spacing: 0.04em;
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-8);
       max-width: 580px;
     }
-
-    .hero-title em {
-      color: var(--sage);
+    .hero-subtitle em {
+      color: var(--color-accent);
       font-style: normal;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      letter-spacing: inherit;
-      line-height: inherit;
     }
-
     .hero-desc {
-      font-size: 1.02rem;
-      color: var(--text);
-      opacity: 0.78;
+      font-size: var(--text-md);
+      color: var(--color-text);
+      opacity: 0.76;
       max-width: 560px;
-      margin-bottom: 3rem;
-      font-weight: 300;
-      line-height: 1.75;
+      margin-bottom: var(--space-12);
+      font-weight: var(--fw-light);
+      line-height: var(--leading-relaxed);
     }
-
-    .hero-contacts {
+    .hero-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 3rem;
+      gap: var(--space-3);
+      margin-bottom: var(--space-12);
     }
-
-    .contact-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      background: transparent;
-      border: 1px solid var(--border-strong);
-      border-radius: 100px;
-      padding: 0.55rem 1.2rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      transition:
-        border-color 0.25s ease,
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .contact-chip:hover {
-      border-color: var(--sage);
-      color: var(--sage);
-      background: rgba(34, 53, 240, 0.07);
-      transform: translateY(-3px);
-    }
-
-    .contact-chip svg {
-      flex-shrink: 0;
-      opacity: 0.7;
-      transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .contact-chip:hover svg { opacity: 1; transform: scale(1.2); }
-
     .hero-cta {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
+      gap: var(--space-4);
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.95rem 2rem;
-      border-radius: 0;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1px solid transparent;
-      position: relative;
-      overflow: hidden;
-      background-size: 200% 100%;
-      transition:
-        background-position 0.45s cubic-bezier(0.76, 0, 0.24, 1),
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .btn-primary {
-      background-image: linear-gradient(to right, var(--sage) 50%, var(--text) 50%);
-      background-position: right center;
-      color: var(--bg);
-    }
-
-    .btn-primary:hover {
-      background-position: left center;
-      color: var(--bg);
-    }
-
-    .btn-outline {
-      background-image: linear-gradient(to right, var(--text) 50%, transparent 50%);
-      background-position: right center;
-      color: var(--text);
-      border-color: var(--text);
-    }
-
-    .btn-outline:hover {
-      background-position: left center;
-      color: var(--bg);
-    }
-
-    .btn .arrow {
-      display: inline-block;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .btn:hover .arrow { transform: translateX(8px); }
-
-    /* ── DECORATIVE NUMBERS ── */
+    /* Hero stats */
     .hero-stats {
       position: absolute;
-      right: 6%;
+      right: var(--page-gutter);
       bottom: 8%;
       display: flex;
-      gap: 2.5rem;
+      gap: var(--space-10);
       z-index: 1;
     }
 
-    .stat-card {
-      text-align: center;
-      position: relative;
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: -16px;
-      transform: translateX(-50%);
-      width: 30px;
-      height: 1px;
-      background: var(--sage);
-    }
-
-    .stat-num {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 2.6rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.65rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-top: 0.5rem;
-      font-weight: 400;
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 7rem 6%;
-      position: relative;
-    }
-
-    .section-header {
-      margin-bottom: 4.5rem;
-      max-width: 780px;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      color: var(--sage);
-      font-weight: 500;
-      margin-bottom: 1.2rem;
-      position: relative;
-      padding-left: 50px;
-    }
-
-    .section-tag::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 36px;
-      height: 1px;
-      background: var(--sage);
-    }
-
-    .section-title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-      font-weight: 400;
-      letter-spacing: 0.005em;
-      line-height: 1.15;
-      color: var(--text);
-    }
-
-    .section-title .accent {
-      font-family: inherit;
-      color: var(--sage);
-      font-weight: inherit;
-      font-size: inherit;
-      letter-spacing: inherit;
-    }
-
-    /* ── ABOUT ── */
-    #about {
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
+    /* About grid */
     .about-grid {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
-      gap: 5rem;
+      gap: var(--space-20);
       align-items: start;
     }
-
     .about-text p {
-      color: var(--text);
+      color: var(--color-text);
       opacity: 0.82;
-      margin-bottom: 1.4rem;
-      font-size: 1.02rem;
-      font-weight: 300;
-      line-height: 1.85;
+      margin-bottom: var(--space-6);
+      font-size: var(--text-md);
+      font-weight: var(--fw-light);
+      line-height: var(--leading-relaxed);
     }
-
     .about-text p:last-child { margin-bottom: 0; }
-
-    .about-text strong {
-      font-weight: 500;
-      color: var(--text);
-      opacity: 1;
-    }
-
+    .about-text strong { font-weight: var(--fw-medium); opacity: 1; }
     .about-highlights {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: var(--space-6);
     }
 
-    .highlight-item {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 2rem 1.6rem;
-      transition: border-color 0.3s, transform 0.3s;
-      position: relative;
-    }
-
-    .highlight-item:hover {
-      border-color: var(--sage);
-      transform: translateY(-4px);
-    }
-
-    .highlight-num {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.2rem;
-      color: var(--sage);
-      margin-bottom: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-    }
-
-    .highlight-title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .highlight-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* ── EXPERIENCE ── */
-    .timeline {
-      position: relative;
-      padding-left: 2.5rem;
-      max-width: 920px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 12px;
-      bottom: 12px;
-      width: 1px;
-      background: var(--border-strong);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 4rem;
-    }
-
-    .timeline-item:last-child { margin-bottom: 0; }
-
-    .timeline-dot {
-      position: absolute;
-      left: -3rem;
-      top: 14px;
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--sage);
-    }
-
-    .timeline-item:hover .timeline-dot {
-      background: var(--sage);
-    }
-
-    .timeline-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 2.4rem 2.6rem;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .timeline-card:hover {
-      border-color: var(--sage);
-      transform: translateX(8px);
-    }
-
-    .timeline-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-logo {
-      height: 28px;
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      opacity: 1;
-      transition: opacity 0.4s ease;
-    }
-
-    .timeline-card:hover .timeline-logo {
-      opacity: 1;
-    }
-
-    .timeline-logo img,
-    .timeline-logo svg {
-      height: 100%;
-      width: auto;
-      max-width: 100px;
-      object-fit: contain;
-    }
-
-    .timeline-company {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
-    .timeline-period {
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 400;
-      padding-top: 0.5rem;
-      white-space: nowrap;
-    }
-
-    .timeline-role {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.1rem;
-      color: var(--sage);
-      font-weight: 400;
-      margin-bottom: 1.3rem;
-      letter-spacing: 0.01em;
-    }
-
-    .timeline-desc {
-      font-size: 0.94rem;
-      color: var(--text);
-      opacity: 0.78;
-      margin-bottom: 1.6rem;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .achievement {
-      display: flex;
-      align-items: baseline;
-      gap: 0.8rem;
-      border-left: 2px solid var(--sage);
-      padding: 0.4rem 0 0.4rem 1.2rem;
-      margin-bottom: 1.4rem;
-      font-size: 0.88rem;
-      color: var(--text);
-      opacity: 0.85;
-      flex-wrap: wrap;
-    }
-
-    .achievement .num {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 400;
-      color: var(--sage);
-      font-size: 1.5rem;
-    }
-
-    .timeline-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.3rem 0.85rem;
-      border: 1px solid var(--border-strong);
-      color: var(--muted);
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      border-radius: 100px;
-      background: var(--bg);
-    }
-
-    /* ── SKILLS ── */
-    #skills {
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
+    /* Skills grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-8);
     }
 
-    .skill-category {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 2.4rem 2rem;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .skill-category:hover {
-      border-color: var(--sage);
-      transform: translateY(-4px);
-    }
-
-    .skill-cat-title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .skill-cat-num {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
-      color: var(--sage);
-      margin-bottom: 1.4rem;
-      display: block;
-      letter-spacing: 0.04em;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .skill-pill {
-      font-size: 0.78rem;
-      padding: 0.4rem 0.9rem;
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      font-weight: 300;
-      background: var(--bg);
-      border-radius: 100px;
-      transition: all 0.25s;
-      letter-spacing: 0.02em;
-    }
-
-    .skill-pill:hover {
-      border-color: var(--sage);
-      color: var(--sage);
-    }
-
-    /* ── LANGUAGES ── */
+    /* Lang grid */
     .lang-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      max-width: 800px;
+      gap: var(--space-8);
+      max-width: 700px;
     }
 
-    .lang-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 2.2rem;
-      text-align: left;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .lang-card:hover {
-      border-color: var(--sage);
-      transform: translateY(-4px);
-    }
-
-    .lang-flag {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-      font-weight: 400;
-    }
-
-    .lang-name {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 500;
-      font-size: 2rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .lang-level {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
-      color: var(--sage);
-      font-weight: 400;
-      letter-spacing: 0.01em;
-    }
-
-    .lang-bar {
-      margin-top: 1.4rem;
-      height: 1px;
-      background: var(--border);
-      position: relative;
-    }
-
-    .lang-bar-fill {
-      position: absolute;
-      top: 0; left: 0;
-      height: 100%;
-      background: var(--sage);
-    }
-
-    /* ── EDUCATION ── */
-    .edu-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 2.4rem 2.6rem;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      max-width: 760px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .edu-card:hover {
-      border-color: var(--sage);
-      transform: translateX(8px);
-    }
-
-    .edu-num {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 3.2rem;
-      color: var(--sage);
-      font-weight: 400;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .edu-school {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 500;
-      font-size: 1.4rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
-    .edu-degree {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.05rem;
-      color: var(--sage);
-      margin-top: 0.3rem;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-    }
-
-    .edu-period {
-      font-size: 0.78rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 0.7rem;
-      font-weight: 400;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      padding: 8rem 6%;
-    }
-
+    /* Contact grid */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      gap: var(--space-20);
       align-items: center;
     }
-
-    .contact-left h3 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      font-weight: 300;
-      margin-top: 1.2rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-      color: var(--text);
+    .contact-left .ds-h3 {
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-6);
     }
-
-    .contact-left h3 .accent {
-      font-family: inherit;
-      color: var(--sage);
-      font-weight: inherit;
-      font-size: inherit;
-      letter-spacing: inherit;
-    }
-
     .contact-left p {
-      color: var(--muted);
-      font-size: 1rem;
+      color: var(--color-text-muted);
+      font-size: var(--text-md);
       max-width: 420px;
-      font-weight: 300;
-      line-height: 1.75;
+      font-weight: var(--fw-light);
+      line-height: var(--leading-relaxed);
     }
 
-    .contact-links {
+    /* Edu stack */
+    .edu-stack {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: var(--space-5);
     }
 
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      background: transparent;
-      border-bottom: 1px solid var(--border);
-      padding: 1.6rem 0;
-      text-decoration: none;
-      transition: padding 0.3s;
-    }
-
-    .contact-link:first-child { border-top: 1px solid var(--border); }
-
-    .contact-link:hover {
-      padding-left: 12px;
-    }
-
-    .contact-link-icon {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--sage);
-    }
-
-    .contact-link-text { flex: 1; }
-
-    .contact-link-label {
-      font-size: 0.68rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-weight: 400;
-      margin-bottom: 0.35rem;
-    }
-
-    .contact-link-value {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.15rem;
-      color: var(--text);
-      font-weight: 400;
-      letter-spacing: 0.005em;
-    }
-
-    .contact-link .arrow {
-      color: var(--muted);
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .contact-link:hover .arrow {
-      opacity: 1;
-      transform: translateX(0);
-      color: var(--sage);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 2.5rem 6%;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      font-size: 0.76rem;
-      color: var(--muted);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 400;
-      background: var(--bg);
-    }
-
-    footer span {
-      color: var(--sage);
-      font-family: 'Allura', cursive;
-      text-transform: none;
-      letter-spacing: 0;
-      font-size: 1.3rem;
-    }
-
-    /* ── RESPONSIVE ── */
+    /* Responsive overrides */
     @media (max-width: 900px) {
       .hero-stats { display: none; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: var(--space-12); }
       .about-highlights { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: var(--space-12); }
       .hero-bg-circle, .hero-bg-circle-2 { display: none; }
     }
-
     @media (max-width: 600px) {
-      section { padding: 5rem 5%; }
-      nav { padding: 1.1rem 5%; }
-      .nav-logo { font-size: 1.3rem; }
-      .nav-right { gap: 1rem; }
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.7rem; letter-spacing: 0.12em; }
-      .lang-toggle { font-size: 0.66rem; letter-spacing: 0.12em; }
-      #hero { padding-top: 72px; }
-      .timeline { padding-left: 1.8rem; }
-      .timeline-dot { left: -2.4rem; }
-      .timeline-card { padding: 1.8rem 1.6rem; }
-      .edu-card { padding: 1.8rem; gap: 1.4rem; }
-      .edu-num { font-size: 2.2rem; }
-    }
-
-    /* ── CUSTOM CURSOR — diamond ── */
-    @media (hover: hover) and (pointer: fine) {
-      * { cursor: none !important; }
-
-      .cursor-dot {
-        position: fixed;
-        width: 6px; height: 6px;
-        background: #2235F0;
-        border-radius: 0;
-        pointer-events: none;
-        z-index: 9999;
-        left: 0; top: 0;
-        transform: translate(-50%, -50%) rotate(45deg);
-        transition: width 0.18s ease, height 0.18s ease, opacity 0.2s;
-        will-change: left, top;
-      }
-
-      .cursor-ring {
-        position: fixed;
-        width: 28px; height: 28px;
-        border: 1.5px solid rgba(34, 53, 240, 0.35);
-        border-radius: 0;
-        pointer-events: none;
-        z-index: 9998;
-        left: 0; top: 0;
-        transform: translate(-50%, -50%) rotate(45deg);
-        transition: width 0.4s ease, height 0.4s ease,
-                    border-color 0.3s ease, opacity 0.3s;
-        will-change: left, top;
-      }
-
-      .cursor-dot.is-hovering {
-        width: 9px; height: 9px;
-      }
-
-      .cursor-ring.is-hovering {
-        width: 44px; height: 44px;
-        border-color: rgba(34, 53, 240, 0.72);
-      }
-    }
-
-    /* ── BUTTON RIPPLE ── */
-    @keyframes btn-ripple {
-      to { transform: translate(-50%, -50%) scale(55); opacity: 0; }
-    }
-    .btn-ripple {
-      position: absolute;
-      width: 5px; height: 5px;
-      background: rgba(255, 255, 255, 0.22);
-      border-radius: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      animation: btn-ripple 0.65s ease-out forwards;
-      pointer-events: none;
-    }
-
-    /* ── FADE-IN ANIMATION ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
+      .hero-name { line-height: 1.05; }
+      .about-highlights { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Maxence S.</div>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#about" data-en="About" data-fr="À propos">About</a></li>
+  <!-- ── NAVIGATION ── -->
+  <nav class="ds-nav" id="main-nav">
+    <a class="ds-nav-logo" href="#hero">Maxence S.</a>
+    <div style="display:flex;align-items:center;gap:2.4rem;">
+      <ul class="ds-nav-links">
+        <li><a href="#about"      data-en="About"      data-fr="À propos">About</a></li>
         <li><a href="#experience" data-en="Experience" data-fr="Expérience">Experience</a></li>
-        <li><a href="#skills" data-en="Skills" data-fr="Compétences">Skills</a></li>
-        <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+        <li><a href="#skills"     data-en="Skills"     data-fr="Compétences">Skills</a></li>
+        <li><a href="#contact"    data-en="Contact"    data-fr="Contact">Contact</a></li>
       </ul>
-      <div class="lang-toggle" aria-label="Language switcher">
+      <div class="ds-lang-toggle" aria-label="Language switcher">
         <button data-lang="en" type="button">EN</button>
         <span class="divider">·</span>
         <button data-lang="fr" type="button">FR</button>
@@ -1099,20 +212,20 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ── HERO ── -->
   <section id="hero">
     <div class="hero-bg-circle"></div>
     <div class="hero-bg-circle-2"></div>
 
-    <div class="hero-content">
+    <div class="hero-content ds-fade-up">
       <div class="hero-eyebrow">Portfolio · 2026</div>
 
       <h1 class="hero-name">
         Maxence<br>
-        <span class="accent">Soubeyrand</span>
+        <span class="ds-script">Soubeyrand</span>
       </h1>
 
-      <p class="hero-title"
+      <p class="hero-subtitle"
          data-en-html='Logistics &amp; Customer Service <em>Professional</em>'
          data-fr-html='<em>Professionnel</em> en Logistique &amp; Service Client'>
         Logistics &amp; Customer Service <em>Professional</em>
@@ -1126,61 +239,64 @@
         and Power BI.
       </p>
 
-      <div class="hero-contacts">
-        <a class="contact-chip" href="mailto:soubeyrand.max@gmail.com">
+      <div class="hero-chips">
+        <a class="ds-chip" href="mailto:soubeyrand.max@gmail.com">
           <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           soubeyrand.max@gmail.com
         </a>
-        <a class="contact-chip" href="tel:+33633676033">
+        <a class="ds-chip" href="tel:+33633676033">
           <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           +33 6 33 67 60 33
         </a>
-        <span class="contact-chip">
+        <span class="ds-chip">
           <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-en="Leuven, Belgium" data-fr="Leuven, Belgique">Leuven, Belgium</span>
+        </span>
+        <span class="ds-badge ds-badge-success" style="margin-left:auto;align-self:center;">
+          <span class="ds-badge-dot"></span>
+          <span data-en="Open to work" data-fr="Disponible">Open to work</span>
         </span>
       </div>
 
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#contact">
+        <a class="ds-btn ds-btn-primary" href="#contact">
           <span data-en="Get in touch" data-fr="Me contacter">Get in touch</span>
-          <span class="arrow">→</span>
+          <span class="ds-btn-arrow">→</span>
         </a>
-        <a class="btn btn-outline" href="#experience" data-en="View experience" data-fr="Voir l&apos;expérience">
+        <a class="ds-btn ds-btn-secondary" href="#experience" data-en="View experience" data-fr="Voir l'expérience">
           View experience
         </a>
       </div>
     </div>
 
-    <!-- DECORATIVE STATS -->
     <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-num" style="font-size:1.7rem;letter-spacing:0.06em" data-en="Client" data-fr="Client">Client</div>
-        <div class="stat-label" data-en="Oriented" data-fr="Orienté">Oriented</div>
+      <div class="ds-stat-card">
+        <div class="ds-stat-num" style="font-size:1.7rem;letter-spacing:.06em" data-en="Client" data-fr="Client">Client</div>
+        <div class="ds-stat-label" data-en="Oriented" data-fr="Orienté">Oriented</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num" style="font-size:1.7rem;letter-spacing:0.06em" data-en="Detail" data-fr="Précision">Detail</div>
-        <div class="stat-label" data-en="Driven" data-fr="Rigueur">Driven</div>
+      <div class="ds-stat-card">
+        <div class="ds-stat-num" style="font-size:1.7rem;letter-spacing:.06em" data-en="Detail" data-fr="Précision">Detail</div>
+        <div class="ds-stat-label" data-en="Driven" data-fr="Rigueur">Driven</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">EMEA</div>
-        <div class="stat-label" data-en-html="Markets<br>Coverage" data-fr-html="Couverture<br>Marchés">Markets<br>Coverage</div>
+      <div class="ds-stat-card">
+        <div class="ds-stat-num">EMEA</div>
+        <div class="ds-stat-label" data-en-html="Markets<br>Coverage" data-fr-html="Couverture<br>Marchés">Markets<br>Coverage</div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-header fade-up">
-      <div class="section-tag" data-en="About" data-fr="À propos">About</div>
-      <h2 class="section-title"
-          data-en-html='Precision meets <span class="accent">people</span>.'
-          data-fr-html='La précision rencontre <span class="accent">l&apos;humain</span>.'>
-        Precision meets <span class="accent">people</span>.
+  <!-- ── ABOUT ── -->
+  <section id="about" class="ds-section ds-section-alt">
+    <div class="ds-section-header ds-fade-up">
+      <div class="ds-overline" data-en="About" data-fr="À propos">About</div>
+      <h2 class="ds-h2" style="margin-top:var(--space-5);"
+          data-en-html='Precision meets <span class="ds-accent">people</span>.'
+          data-fr-html='La précision rencontre <span class="ds-accent">l&apos;humain</span>.'>
+        Precision meets <span class="ds-accent">people</span>.
       </h2>
     </div>
 
-    <div class="about-grid fade-up">
+    <div class="about-grid ds-fade-up">
       <div class="about-text">
         <p data-en="I am a Logistics &amp; Customer Service professional with a track record of managing strategic accounts across EMEA markets. My strength is combining operational rigor with a genuine drive to deliver measurable results."
            data-fr="Je suis un professionnel de la Logistique &amp; du Service Client avec une expérience solide en gestion de comptes stratégiques sur la zone EMEA. Ma force : combiner rigueur opérationnelle et envie réelle de livrer des résultats mesurables.">
@@ -1208,117 +324,114 @@
         </p>
       </div>
 
-      <div class="about-highlights">
-        <div class="highlight-item">
-          <div class="highlight-num">01</div>
-          <div class="highlight-title" data-en="Measurable impact" data-fr="Impact mesurable">Measurable impact</div>
-          <div class="highlight-desc" data-en="Lifted Nokia account performance from 88% to 95%" data-fr="Performance du compte Nokia portée de 88% à 95%">Lifted Nokia account performance from 88% to 95%</div>
+      <div class="about-highlights ds-stagger">
+        <div class="ds-card-highlight">
+          <div class="ds-card-num">01</div>
+          <div class="ds-card-title" data-en="Measurable impact" data-fr="Impact mesurable">Measurable impact</div>
+          <div class="ds-card-desc" data-en="Lifted Nokia account performance from 88% to 95%" data-fr="Performance du compte Nokia portée de 88% à 95%">Lifted Nokia account performance from 88% to 95%</div>
         </div>
-        <div class="highlight-item">
-          <div class="highlight-num">02</div>
-          <div class="highlight-title" data-en="EMEA exposure" data-fr="Exposition EMEA">EMEA exposure</div>
-          <div class="highlight-desc" data-en="20 strategic accounts, global logistics, multicultural teams" data-fr="20 comptes stratégiques, logistique globale, équipes multiculturelles">20 strategic accounts, global logistics, multicultural teams</div>
+        <div class="ds-card-highlight">
+          <div class="ds-card-num">02</div>
+          <div class="ds-card-title" data-en="EMEA exposure" data-fr="Exposition EMEA">EMEA exposure</div>
+          <div class="ds-card-desc" data-en="20 strategic accounts, global logistics, multicultural teams" data-fr="20 comptes stratégiques, logistique globale, équipes multiculturelles">20 strategic accounts, global logistics, multicultural teams</div>
         </div>
-        <div class="highlight-item">
-          <div class="highlight-num">03</div>
-          <div class="highlight-title" data-en="Tools-fluent" data-fr="Maîtrise des outils">Tools-fluent</div>
-          <div class="highlight-desc" data-en="Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)" data-fr="Salesforce, Oracle, Power BI, Excel avancé (TCD, Macros)">Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)</div>
+        <div class="ds-card-highlight">
+          <div class="ds-card-num">03</div>
+          <div class="ds-card-title" data-en="Tools-fluent" data-fr="Maîtrise des outils">Tools-fluent</div>
+          <div class="ds-card-desc" data-en="Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)" data-fr="Salesforce, Oracle, Power BI, Excel avancé (TCD, Macros)">Salesforce, Oracle, Power BI, advanced Excel (Pivot, Macros)</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-header fade-up">
-      <div class="section-tag" data-en="Career" data-fr="Carrière">Career</div>
-      <h2 class="section-title"
-          data-en-html='Work <span class="accent">experience</span>.'
-          data-fr-html='<span class="accent">Expérience</span> professionnelle.'>
-        Work <span class="accent">experience</span>.
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience" class="ds-section">
+    <div class="ds-section-header ds-fade-up">
+      <div class="ds-overline" data-en="Career" data-fr="Carrière">Career</div>
+      <h2 class="ds-h2" style="margin-top:var(--space-5);"
+          data-en-html='Work <span class="ds-accent">experience</span>.'
+          data-fr-html='<span class="ds-accent">Expérience</span> professionnelle.'>
+        Work <span class="ds-accent">experience</span>.
       </h2>
     </div>
 
-    <div class="timeline">
+    <div class="ds-timeline">
 
-      <!-- Role 1: Atmus -->
-      <div class="timeline-item fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-meta">
+      <!-- Atmus -->
+      <div class="ds-timeline-item ds-fade-up">
+        <div class="ds-timeline-dot"></div>
+        <div class="ds-timeline-card">
+          <div class="ds-timeline-meta">
             <div>
-              <div class="timeline-company">Atmus Filtration Technologies</div>
-              <div class="timeline-period" data-en="Jan 2025 — Present" data-fr="Janv. 2025 — Aujourd&apos;hui">Jan 2025 — Present</div>
+              <div class="ds-timeline-company">Atmus Filtration Technologies</div>
+              <div class="ds-timeline-period" data-en="Jan 2025 — Present" data-fr="Janv. 2025 — Aujourd&apos;hui">Jan 2025 — Present</div>
             </div>
-            <div class="timeline-logo">
+            <div class="ds-timeline-logo">
               <img src="logos/atmus.jpg" alt="Atmus Filtration Technologies">
             </div>
           </div>
-          <div class="timeline-role" data-en="Customer Support Analyst" data-fr="Analyste Support Client">Customer Support Analyst</div>
-          <p class="timeline-desc"
+          <div class="ds-timeline-role" data-en="Customer Support Analyst" data-fr="Analyste Support Client">Customer Support Analyst</div>
+          <p class="ds-timeline-desc"
              data-en="Managing the end-to-end order lifecycle for 20 strategic MEA accounts, ensuring on-time delivery and high customer satisfaction. Handle customer claims, issue credit/debit notes, and collaborate with logistics, finance, and sales teams to support regional growth. Use Salesforce and Oracle to track orders, manage interactions, and drive operational efficiency."
              data-fr="Gestion du cycle complet des commandes pour 20 comptes stratégiques MEA, en assurant la livraison à temps et la satisfaction client. Traitement des réclamations, émission de notes de crédit/débit et collaboration avec les équipes logistique, finance et ventes pour soutenir la croissance régionale. Utilisation de Salesforce et Oracle pour suivre les commandes, gérer les interactions et améliorer l&apos;efficacité opérationnelle.">
             Managing the end-to-end order lifecycle for 20 strategic MEA accounts,
             ensuring on-time delivery and high customer satisfaction. Handle customer
             claims, issue credit/debit notes, and collaborate with logistics, finance,
-            and sales teams to support regional growth. Use Salesforce and Oracle to
-            track orders, manage interactions, and drive operational efficiency.
+            and sales teams to support regional growth.
           </p>
-          <div class="achievement"
+          <div class="ds-achievement"
                data-en-html='<span>Managing</span> <span class="num">20</span> <span>strategic MEA accounts end-to-end</span>'
                data-fr-html='<span>Gestion de</span> <span class="num">20</span> <span>comptes stratégiques MEA de bout en bout</span>'>
             <span>Managing</span>
             <span class="num">20</span>
             <span>strategic MEA accounts end-to-end</span>
           </div>
-          <div class="timeline-tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">Oracle</span>
-            <span class="tag" data-en="Order Lifecycle" data-fr="Cycle des Commandes">Order Lifecycle</span>
-            <span class="tag" data-en="MEA Region" data-fr="Région MEA">MEA Region</span>
-            <span class="tag" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
-            <span class="tag" data-en="Cross-functional" data-fr="Interfonctionnel">Cross-functional</span>
+          <div class="ds-timeline-tags">
+            <span class="ds-tag">Salesforce</span>
+            <span class="ds-tag">Oracle</span>
+            <span class="ds-tag" data-en="Order Lifecycle" data-fr="Cycle des Commandes">Order Lifecycle</span>
+            <span class="ds-tag" data-en="MEA Region" data-fr="Région MEA">MEA Region</span>
+            <span class="ds-tag" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
+            <span class="ds-tag" data-en="Cross-functional" data-fr="Interfonctionnel">Cross-functional</span>
           </div>
         </div>
       </div>
 
-      <!-- Role 2: DHL -->
-      <div class="timeline-item fade-up">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-meta">
+      <!-- DHL -->
+      <div class="ds-timeline-item ds-fade-up">
+        <div class="ds-timeline-dot"></div>
+        <div class="ds-timeline-card">
+          <div class="ds-timeline-meta">
             <div>
-              <div class="timeline-company">DHL Express Worldwide</div>
-              <div class="timeline-period">2022 — 2023</div>
+              <div class="ds-timeline-company">DHL Express Worldwide</div>
+              <div class="ds-timeline-period">2022 — 2023</div>
             </div>
-            <div class="timeline-logo">
+            <div class="ds-timeline-logo">
               <img src="logos/dhl.svg" alt="DHL Express">
             </div>
           </div>
-          <div class="timeline-role" data-en="Customer Service Support Coordinator · Account Manager" data-fr="Coordinateur Support Service Client · Responsable de Compte">Customer Service Support Coordinator · Account Manager</div>
-          <p class="timeline-desc"
-             data-en="Managed the Nokia global account, ensuring high satisfaction and retention. Conducted performance analyses to identify improvement opportunities, coordinated with warehouses to implement corrective action plans, and delivered Monthly &amp; Quarterly Business Reviews to senior management, presenting KPIs, performance trends, and improvement initiatives."
-             data-fr="Gestion du compte global Nokia, en assurant une satisfaction et une rétention élevées. Réalisation d&apos;analyses de performance pour identifier les opportunités d&apos;amélioration, coordination avec les entrepôts pour mettre en place des plans d&apos;action correctifs, et présentation de Business Reviews mensuelles &amp; trimestrielles à la direction (KPI, tendances, initiatives).">
-            Managed the Nokia global account, ensuring high satisfaction and
-            retention. Conducted performance analyses to identify improvement
-            opportunities, coordinated with warehouses to implement corrective
-            action plans, and delivered Monthly &amp; Quarterly Business Reviews to
-            senior management, presenting KPIs, performance trends, and improvement
-            initiatives.
+          <div class="ds-timeline-role" data-en="Customer Service Support Coordinator · Account Manager" data-fr="Coordinateur Support Service Client · Responsable de Compte">Customer Service Support Coordinator · Account Manager</div>
+          <p class="ds-timeline-desc"
+             data-en="Managed the Nokia global account, ensuring high satisfaction and retention. Conducted performance analyses to identify improvement opportunities, coordinated with warehouses to implement corrective action plans, and delivered Monthly &amp; Quarterly Business Reviews to senior management."
+             data-fr="Gestion du compte global Nokia, en assurant une satisfaction et une rétention élevées. Réalisation d&apos;analyses de performance, coordination avec les entrepôts pour des plans d&apos;action correctifs, et présentation de Business Reviews mensuelles &amp; trimestrielles à la direction.">
+            Managed the Nokia global account, ensuring high satisfaction and retention.
+            Conducted performance analyses, coordinated with warehouses to implement
+            corrective action plans, and delivered Monthly &amp; Quarterly Business
+            Reviews to senior management.
           </p>
-          <div class="achievement"
+          <div class="ds-achievement"
                data-en-html='<span>Lifted Nokia service performance from</span> <span class="num">88% → 95%</span>'
                data-fr-html='<span>Performance du service Nokia portée de</span> <span class="num">88% → 95%</span>'>
             <span>Lifted Nokia service performance from</span>
             <span class="num">88% → 95%</span>
           </div>
-          <div class="timeline-tags">
-            <span class="tag" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</span>
-            <span class="tag">Nokia</span>
-            <span class="tag">QBR / MBR</span>
-            <span class="tag" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
-            <span class="tag" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
-            <span class="tag" data-en="Warehouse Coordination" data-fr="Coordination Entrepôts">Warehouse Coordination</span>
+          <div class="ds-timeline-tags">
+            <span class="ds-tag" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</span>
+            <span class="ds-tag">Nokia</span>
+            <span class="ds-tag">QBR / MBR</span>
+            <span class="ds-tag" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
+            <span class="ds-tag" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
+            <span class="ds-tag" data-en="Warehouse Coordination" data-fr="Coordination Entrepôts">Warehouse Coordination</span>
           </div>
         </div>
       </div>
@@ -1326,134 +439,137 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-header fade-up">
-      <div class="section-tag" data-en="Expertise" data-fr="Expertise">Expertise</div>
-      <h2 class="section-title"
-          data-en-html='Skills &amp; <span class="accent">tools</span>.'
-          data-fr-html='Compétences &amp; <span class="accent">outils</span>.'>
-        Skills &amp; <span class="accent">tools</span>.
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="ds-section ds-section-alt">
+    <div class="ds-section-header ds-fade-up">
+      <div class="ds-overline" data-en="Expertise" data-fr="Expertise">Expertise</div>
+      <h2 class="ds-h2" style="margin-top:var(--space-5);"
+          data-en-html='Skills &amp; <span class="ds-accent">tools</span>.'
+          data-fr-html='Compétences &amp; <span class="ds-accent">outils</span>.'>
+        Skills &amp; <span class="ds-accent">tools</span>.
       </h2>
     </div>
 
-    <div class="skills-grid fade-up">
-      <div class="skill-category">
-        <span class="skill-cat-num">01.</span>
-        <div class="skill-cat-title" data-en="Technical Tools" data-fr="Outils Techniques">Technical Tools</div>
-        <div class="skill-list">
-          <span class="skill-pill">Salesforce</span>
-          <span class="skill-pill">Oracle</span>
-          <span class="skill-pill">Power BI</span>
-          <span class="skill-pill" data-en="Advanced Excel" data-fr="Excel Avancé">Advanced Excel</span>
-          <span class="skill-pill" data-en="Pivot Tables" data-fr="Tableaux Croisés">Pivot Tables</span>
-          <span class="skill-pill">Macros</span>
+    <div class="skills-grid ds-stagger ds-fade-up">
+      <div class="ds-skill-card">
+        <span class="ds-skill-cat-num">01.</span>
+        <div class="ds-skill-cat-title" data-en="Technical Tools" data-fr="Outils Techniques">Technical Tools</div>
+        <div class="ds-skill-list">
+          <span class="ds-skill-pill">Salesforce</span>
+          <span class="ds-skill-pill">Oracle</span>
+          <span class="ds-skill-pill">Power BI</span>
+          <span class="ds-skill-pill" data-en="Advanced Excel" data-fr="Excel Avancé">Advanced Excel</span>
+          <span class="ds-skill-pill" data-en="Pivot Tables" data-fr="Tableaux Croisés">Pivot Tables</span>
+          <span class="ds-skill-pill">Macros</span>
         </div>
       </div>
-
-      <div class="skill-category">
-        <span class="skill-cat-num">02.</span>
-        <div class="skill-cat-title" data-en="Operations" data-fr="Opérations">Operations</div>
-        <div class="skill-list">
-          <span class="skill-pill" data-en="Order Management" data-fr="Gestion des Commandes">Order Management</span>
-          <span class="skill-pill" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
-          <span class="skill-pill" data-en="Credit / Debit Notes" data-fr="Notes de Crédit / Débit">Credit / Debit Notes</span>
-          <span class="skill-pill" data-en="Cross-functional Coordination" data-fr="Coordination Interfonctionnelle">Cross-functional Coordination</span>
-          <span class="skill-pill" data-en="Service Delivery" data-fr="Prestation de Services">Service Delivery</span>
+      <div class="ds-skill-card">
+        <span class="ds-skill-cat-num">02.</span>
+        <div class="ds-skill-cat-title" data-en="Operations" data-fr="Opérations">Operations</div>
+        <div class="ds-skill-list">
+          <span class="ds-skill-pill" data-en="Order Management" data-fr="Gestion des Commandes">Order Management</span>
+          <span class="ds-skill-pill" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
+          <span class="ds-skill-pill" data-en="Credit / Debit Notes" data-fr="Notes de Crédit / Débit">Credit / Debit Notes</span>
+          <span class="ds-skill-pill" data-en="Cross-functional" data-fr="Interfonctionnel">Cross-functional</span>
+          <span class="ds-skill-pill" data-en="Service Delivery" data-fr="Prestation de Services">Service Delivery</span>
         </div>
       </div>
-
-      <div class="skill-category">
-        <span class="skill-cat-num">03.</span>
-        <div class="skill-cat-title" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</div>
-        <div class="skill-list">
-          <span class="skill-pill" data-en="Strategic Accounts" data-fr="Comptes Stratégiques">Strategic Accounts</span>
-          <span class="skill-pill" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
-          <span class="skill-pill">QBR / MBR</span>
-          <span class="skill-pill" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
-          <span class="skill-pill" data-en="Customer Retention" data-fr="Rétention Clients">Customer Retention</span>
+      <div class="ds-skill-card">
+        <span class="ds-skill-cat-num">03.</span>
+        <div class="ds-skill-cat-title" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</div>
+        <div class="ds-skill-list">
+          <span class="ds-skill-pill" data-en="Strategic Accounts" data-fr="Comptes Stratégiques">Strategic Accounts</span>
+          <span class="ds-skill-pill" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
+          <span class="ds-skill-pill">QBR / MBR</span>
+          <span class="ds-skill-pill" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
+          <span class="ds-skill-pill" data-en="Customer Retention" data-fr="Rétention Clients">Customer Retention</span>
         </div>
       </div>
-
-      <div class="skill-category">
-        <span class="skill-cat-num">04.</span>
-        <div class="skill-cat-title" data-en="Soft Skills" data-fr="Soft Skills">Soft Skills</div>
-        <div class="skill-list">
-          <span class="skill-pill" data-en="Attention to Detail" data-fr="Souci du Détail">Attention to Detail</span>
-          <span class="skill-pill" data-en="Communication &amp; Presentation" data-fr="Communication &amp; Présentation">Communication &amp; Presentation</span>
-          <span class="skill-pill" data-en="Problem-solving" data-fr="Résolution de Problèmes">Problem-solving</span>
-          <span class="skill-pill" data-en="Customer Oriented" data-fr="Orienté Client">Customer Oriented</span>
+      <div class="ds-skill-card">
+        <span class="ds-skill-cat-num">04.</span>
+        <div class="ds-skill-cat-title" data-en="Soft Skills" data-fr="Soft Skills">Soft Skills</div>
+        <div class="ds-skill-list">
+          <span class="ds-skill-pill" data-en="Attention to Detail" data-fr="Souci du Détail">Attention to Detail</span>
+          <span class="ds-skill-pill" data-en="Communication" data-fr="Communication">Communication</span>
+          <span class="ds-skill-pill" data-en="Problem-solving" data-fr="Résolution de Problèmes">Problem-solving</span>
+          <span class="ds-skill-pill" data-en="Customer Oriented" data-fr="Orienté Client">Customer Oriented</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LANGUAGES -->
-  <section id="languages">
-    <div class="section-header fade-up">
-      <div class="section-tag" data-en="Languages" data-fr="Langues">Languages</div>
-      <h2 class="section-title"
-          data-en-html='Communication <span class="accent">fluency</span>.'
-          data-fr-html='<span class="accent">Maîtrise</span> linguistique.'>
-        Communication <span class="accent">fluency</span>.
+  <!-- ── LANGUAGES ── -->
+  <section id="languages" class="ds-section">
+    <div class="ds-section-header ds-fade-up">
+      <div class="ds-overline" data-en="Languages" data-fr="Langues">Languages</div>
+      <h2 class="ds-h2" style="margin-top:var(--space-5);"
+          data-en-html='Communication <span class="ds-accent">fluency</span>.'
+          data-fr-html='<span class="ds-accent">Maîtrise</span> linguistique.'>
+        Communication <span class="ds-accent">fluency</span>.
       </h2>
     </div>
 
-    <div class="lang-grid fade-up">
-      <div class="lang-card">
-        <div class="lang-flag">FR</div>
-        <div class="lang-name" data-en="French" data-fr="Français">French</div>
-        <div class="lang-level" data-en="Native" data-fr="Natif">Native</div>
-        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+    <div class="lang-grid ds-fade-up">
+      <div class="ds-lang-card">
+        <div class="ds-lang-code">FR</div>
+        <div class="ds-lang-name" data-en="French" data-fr="Français">French</div>
+        <div class="ds-lang-level" data-en="Native" data-fr="Natif">Native</div>
+        <div class="ds-lang-bar">
+          <div class="ds-lang-bar-fill" data-width="1"></div>
+        </div>
       </div>
-      <div class="lang-card">
-        <div class="lang-flag">EN</div>
-        <div class="lang-name" data-en="English" data-fr="Anglais">English</div>
-        <div class="lang-level" data-en="C1 — Advanced" data-fr="C1 — Avancé">C1 — Advanced</div>
-        <div class="lang-bar"><div class="lang-bar-fill" style="width:90%"></div></div>
+      <div class="ds-lang-card">
+        <div class="ds-lang-code">EN</div>
+        <div class="ds-lang-name" data-en="English" data-fr="Anglais">English</div>
+        <div class="ds-lang-level" data-en="C1 — Advanced" data-fr="C1 — Avancé">C1 — Advanced</div>
+        <div class="ds-lang-bar">
+          <div class="ds-lang-bar-fill" data-width="0.9"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="education" style="background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="section-header fade-up">
-      <div class="section-tag" data-en="Education" data-fr="Formation">Education</div>
-      <h2 class="section-title"
-          data-en-html='Academic <span class="accent">background</span>.'
-          data-fr-html='Parcours <span class="accent">académique</span>.'>
-        Academic <span class="accent">background</span>.
+  <!-- ── EDUCATION ── -->
+  <section id="education" class="ds-section ds-section-alt">
+    <div class="ds-section-header ds-fade-up">
+      <div class="ds-overline" data-en="Education" data-fr="Formation">Education</div>
+      <h2 class="ds-h2" style="margin-top:var(--space-5);"
+          data-en-html='Academic <span class="ds-accent">background</span>.'
+          data-fr-html='Parcours <span class="ds-accent">académique</span>.'>
+        Academic <span class="ds-accent">background</span>.
       </h2>
     </div>
 
-    <div class="fade-up" style="display:flex; flex-direction:column; gap:1.4rem;">
-      <div class="edu-card">
-        <div class="edu-num">01</div>
+    <div class="edu-stack ds-fade-up">
+      <div class="ds-edu-card">
+        <div class="ds-edu-num">01</div>
         <div>
-          <div class="edu-school">Université Clermont-Auvergne</div>
-          <div class="edu-degree" data-en="Bachelor&apos;s Degree in Economics and Political Science" data-fr="Licence en Économie et Sciences Politiques">Bachelor's Degree in Economics and Political Science</div>
-          <div class="edu-period">Clermont-Ferrand, France</div>
+          <div class="ds-edu-school">Université Clermont-Auvergne</div>
+          <div class="ds-edu-degree" data-en="Bachelor&apos;s Degree in Economics and Political Science" data-fr="Licence en Économie et Sciences Politiques">Bachelor's Degree in Economics and Political Science</div>
+          <div class="ds-edu-period">Clermont-Ferrand, France</div>
         </div>
       </div>
-
-      <div class="edu-card">
-        <div class="edu-num">02</div>
+      <div class="ds-edu-card">
+        <div class="ds-edu-num">02</div>
         <div>
-          <div class="edu-school" data-en="Language Stay — Toronto, Canada" data-fr="Séjour Linguistique — Toronto, Canada">Language Stay — Toronto, Canada</div>
-          <div class="edu-degree" data-en="Year-long English immersion" data-fr="Immersion anglophone d&apos;un an">Year-long English immersion</div>
-          <div class="edu-period">2016 — 2017</div>
+          <div class="ds-edu-school" data-en="Language Stay — Toronto, Canada" data-fr="Séjour Linguistique — Toronto, Canada">Language Stay — Toronto, Canada</div>
+          <div class="ds-edu-degree" data-en="Year-long English immersion" data-fr="Immersion anglophone d&apos;un an">Year-long English immersion</div>
+          <div class="ds-edu-period">2016 — 2017</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-grid fade-up">
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="ds-section ds-section-alt" style="border-bottom:none;">
+    <div class="contact-grid ds-fade-up">
       <div class="contact-left">
-        <div class="section-tag" data-en="Contact" data-fr="Contact">Contact</div>
-        <h3 data-en-html='Let&apos;s work <span class="accent">together</span>.'
-            data-fr-html='Travaillons <span class="accent">ensemble</span>.'>Let's work <span class="accent">together</span>.</h3>
+        <div class="ds-overline" data-en="Contact" data-fr="Contact">Contact</div>
+        <h3 class="ds-h3"
+            data-en-html='Let&apos;s work <span class="ds-accent">together</span>.'
+            data-fr-html='Travaillons <span class="ds-accent">ensemble</span>.'>
+          Let's work <span class="ds-accent">together</span>.
+        </h3>
         <p data-en="I&apos;m actively looking for new opportunities. Whether you have a position in mind or just want to connect — my inbox is always open."
            data-fr="Je suis activement à la recherche de nouvelles opportunités. Que vous ayez un poste à pourvoir ou simplement envie d&apos;échanger, ma boîte est toujours ouverte.">
           I'm actively looking for new opportunities. Whether you have a position
@@ -1461,154 +577,158 @@
         </p>
       </div>
 
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:soubeyrand.max@gmail.com">
-          <div class="contact-link-icon">
+      <div class="ds-contact-links">
+        <a class="ds-contact-link" href="mailto:soubeyrand.max@gmail.com">
+          <div class="ds-contact-link-icon">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <div class="contact-link-text">
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">soubeyrand.max@gmail.com</div>
+          <div>
+            <div class="ds-contact-link-label">Email</div>
+            <div class="ds-contact-link-value">soubeyrand.max@gmail.com</div>
           </div>
-          <span class="arrow">→</span>
+          <span class="ds-contact-arrow">→</span>
         </a>
-
-        <a class="contact-link" href="tel:+33633676033">
-          <div class="contact-link-icon">
+        <a class="ds-contact-link" href="tel:+33633676033">
+          <div class="ds-contact-link-icon">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
-          <div class="contact-link-text">
-            <div class="contact-link-label" data-en="Phone" data-fr="Téléphone">Phone</div>
-            <div class="contact-link-value">+33 6 33 67 60 33</div>
+          <div>
+            <div class="ds-contact-link-label" data-en="Phone" data-fr="Téléphone">Phone</div>
+            <div class="ds-contact-link-value">+33 6 33 67 60 33</div>
           </div>
-          <span class="arrow">→</span>
+          <span class="ds-contact-arrow">→</span>
         </a>
-
-        <div class="contact-link" style="cursor:default">
-          <div class="contact-link-icon">
+        <div class="ds-contact-link" style="cursor:default">
+          <div class="ds-contact-link-icon">
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <div class="contact-link-text">
-            <div class="contact-link-label" data-en="Location" data-fr="Localisation">Location</div>
-            <div class="contact-link-value" data-en="Leuven, Belgium" data-fr="Leuven, Belgique">Leuven, Belgium</div>
+          <div>
+            <div class="ds-contact-link-label" data-en="Location" data-fr="Localisation">Location</div>
+            <div class="ds-contact-link-value" data-en="Leuven, Belgium" data-fr="Leuven, Belgique">Leuven, Belgium</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p data-en-html='Designed &amp; built by <span>Maxence Soubeyrand</span> · 2026'
-       data-fr-html='Conçu &amp; développé par <span>Maxence Soubeyrand</span> · 2026'>Designed &amp; built by <span>Maxence Soubeyrand</span> · 2026</p>
+  <!-- ── FOOTER ── -->
+  <footer class="ds-footer">
+    <p data-en-html='Designed &amp; built by <span class="ds-script">Maxence Soubeyrand</span> · 2026'
+       data-fr-html='Conçu &amp; développé par <span class="ds-script">Maxence Soubeyrand</span> · 2026'>
+      Designed &amp; built by <span class="ds-script">Maxence Soubeyrand</span> · 2026
+    </p>
   </footer>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
+  <!-- CURSOR -->
+  <div class="ds-cursor-dot" aria-hidden="true"></div>
+  <div class="ds-cursor-ring" aria-hidden="true"></div>
 
   <script>
-    // ── Language switcher ─────────────────────────────
+    /* ── Language switcher ── */
     function setLang(lang) {
-      // Plain-text translations
       document.querySelectorAll('[data-en]').forEach(el => {
         const v = el.dataset[lang];
         if (typeof v === 'string') el.textContent = v;
       });
-      // HTML translations (mixed-content elements)
       document.querySelectorAll('[data-en-html]').forEach(el => {
-        const key = lang + 'Html';
-        const v = el.dataset[key];
+        const v = el.dataset[lang + 'Html'];
         if (typeof v === 'string') el.innerHTML = v;
       });
       document.documentElement.lang = lang;
-      try { localStorage.setItem('lang', lang); } catch (e) {}
-      // Update toggle UI
-      document.querySelectorAll('.lang-toggle button').forEach(b => {
-        b.classList.toggle('active', b.dataset.lang === lang);
-      });
+      try { localStorage.setItem('lang', lang); } catch(e) {}
+      document.querySelectorAll('.ds-lang-toggle button').forEach(b =>
+        b.classList.toggle('active', b.dataset.lang === lang));
     }
-
-    // Initialize: saved choice > browser default > 'en'
-    (function initLang() {
+    (function() {
       let saved = null;
-      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      try { saved = localStorage.getItem('lang'); } catch(e) {}
       const browser = (navigator.language || 'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
       setLang(saved === 'fr' || saved === 'en' ? saved : browser);
     })();
+    document.querySelectorAll('.ds-lang-toggle button').forEach(b =>
+      b.addEventListener('click', () => setLang(b.dataset.lang)));
 
-    // Wire up toggle buttons
-    document.querySelectorAll('.lang-toggle button').forEach(b => {
-      b.addEventListener('click', () => setLang(b.dataset.lang));
-    });
+    /* ── Nav scroll state ── */
+    const nav = document.getElementById('main-nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-    // ── Fade-up on scroll ────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
+    /* ── Active nav link ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.ds-nav-links a');
+    const spy = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
         }
       });
-    }, { threshold: 0.1 });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => spy.observe(s));
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    /* ── Fade-up on scroll ── */
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.ds-fade-up').forEach(el => fadeObs.observe(el));
 
-    // ── Custom cursor ────────────────────────────────
-    (function () {
-      const dot  = document.querySelector('.cursor-dot');
-      const ring = document.querySelector('.cursor-ring');
+    /* ── Language bar animate ── */
+    const barObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const fill = e.target.querySelector('.ds-lang-bar-fill');
+          if (fill) {
+            const w = parseFloat(fill.dataset.width || 1);
+            fill.style.width = (w * 100) + '%';
+            fill.classList.add('animate');
+          }
+          barObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.ds-lang-card').forEach(el => barObs.observe(el));
+
+    /* ── Custom cursor ── */
+    (function() {
+      const dot = document.querySelector('.ds-cursor-dot');
+      const ring = document.querySelector('.ds-cursor-ring');
       if (!dot || !ring) return;
-
-      let mx = -200, my = -200;
-      let rx = -200, ry = -200;
-
+      let mx = -200, my = -200, rx = -200, ry = -200;
       document.addEventListener('mousemove', e => {
         mx = e.clientX; my = e.clientY;
-        dot.style.left = mx + 'px';
-        dot.style.top  = my + 'px';
+        dot.style.left = mx + 'px'; dot.style.top = my + 'px';
       });
-
-      (function tickRing() {
-        rx += (mx - rx) * 0.1;
-        ry += (my - ry) * 0.1;
-        ring.style.left = rx + 'px';
-        ring.style.top  = ry + 'px';
-        requestAnimationFrame(tickRing);
+      (function tick() {
+        rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(tick);
       })();
-
       document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-        el.addEventListener('mouseenter', () => { dot.classList.add('is-hovering'); ring.classList.add('is-hovering'); });
-        el.addEventListener('mouseleave', () => { dot.classList.remove('is-hovering'); ring.classList.remove('is-hovering'); });
+        el.addEventListener('mouseenter', () => { dot.classList.add('hovering'); ring.classList.add('hovering'); });
+        el.addEventListener('mouseleave', () => { dot.classList.remove('hovering'); ring.classList.remove('hovering'); });
       });
     })();
 
-    // ── Magnetic buttons ─────────────────────────────
-    document.querySelectorAll('.btn').forEach(btn => {
+    /* ── Magnetic buttons ── */
+    document.querySelectorAll('.ds-btn').forEach(btn => {
       btn.addEventListener('mousemove', e => {
         const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width  / 2) * 0.18;
-        const y = (e.clientY - r.top  - r.height / 2) * 0.28;
-        btn.style.transition =
-          'background-position 0.45s cubic-bezier(0.76,0,0.24,1), color 0.3s, border-color 0.3s, transform 0.1s linear';
-        btn.style.transform = `translate(${x}px, ${y}px)`;
+        const x = (e.clientX - r.left - r.width / 2) * 0.18;
+        const y = (e.clientY - r.top - r.height / 2) * 0.28;
+        btn.style.transition = 'background-position .45s,color .3s,border-color .3s,transform .1s linear';
+        btn.style.transform = `translate(${x}px,${y}px)`;
       });
-
       btn.addEventListener('mouseleave', () => {
-        btn.style.transition =
-          'background-position 0.45s cubic-bezier(0.76,0,0.24,1), color 0.3s, border-color 0.3s, transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)';
+        btn.style.transition = 'background-position .45s,color .3s,border-color .3s,transform .6s cubic-bezier(.25,.46,.45,.94)';
         btn.style.transform = '';
       });
-    });
-
-    // ── Click ripple ─────────────────────────────────
-    document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('click', e => {
-        const r   = btn.getBoundingClientRect();
+        const r = btn.getBoundingClientRect();
         const rip = document.createElement('span');
-        rip.className = 'btn-ripple';
+        rip.className = 'ds-btn-ripple';
         rip.style.left = (e.clientX - r.left) + 'px';
-        rip.style.top  = (e.clientY - r.top)  + 'px';
+        rip.style.top = (e.clientY - r.top) + 'px';
         btn.appendChild(rip);
         setTimeout(() => rip.remove(), 700);
       });
