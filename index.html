@@ -179,6 +179,80 @@
       line-height: var(--leading-relaxed);
     }
 
+    /* ── Experience expand ── */
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding-bottom: var(--space-5);
+    }
+    .exp-header-left { flex: 1; min-width: 0; }
+    .exp-chevron {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border: 1px solid var(--color-border-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted);
+      transition:
+        border-color var(--duration-base),
+        color var(--duration-base),
+        background var(--duration-base),
+        transform var(--duration-slow) var(--ease-spring);
+      margin-top: var(--space-1);
+    }
+    .exp-chevron svg {
+      transition: transform var(--duration-slow) var(--ease-spring);
+    }
+    .ds-timeline-card:hover .exp-chevron {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: var(--color-accent-pale);
+    }
+    .ds-timeline-card:hover .exp-chevron svg {
+      transform: rotate(180deg);
+    }
+
+    /* Hint bar at bottom of header */
+    .exp-hint {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--color-border);
+      transition: color var(--duration-base), border-color var(--duration-base);
+    }
+    .ds-timeline-card:hover .exp-hint {
+      color: var(--color-accent);
+      border-color: var(--color-accent-pale);
+    }
+    .exp-hint-line {
+      flex: 1;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.35;
+    }
+
+    /* Collapsible body */
+    .exp-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.55s var(--ease-out);
+    }
+    .ds-timeline-card:hover .exp-body {
+      grid-template-rows: 1fr;
+    }
+    .exp-body-inner {
+      overflow: hidden;
+    }
+    .exp-body-content {
+      padding-top: var(--space-6);
+    }
+
     /* Edu stack */
     .edu-stack {
       display: flex;
@@ -369,39 +443,62 @@
       <div class="ds-timeline-item ds-fade-up">
         <div class="ds-timeline-dot"></div>
         <div class="ds-timeline-card">
-          <div class="ds-timeline-meta">
-            <div>
+
+          <!-- Header — toujours visible -->
+          <div class="exp-header">
+            <div class="exp-header-left">
+              <div class="ds-timeline-meta" style="margin-bottom:var(--space-2);">
+                <div class="ds-timeline-logo">
+                  <img src="logos/atmus.jpg" alt="Atmus Filtration Technologies">
+                </div>
+              </div>
               <div class="ds-timeline-company">Atmus Filtration Technologies</div>
               <div class="ds-timeline-period" data-en="Jan 2025 — Present" data-fr="Janv. 2025 — Aujourd&apos;hui">Jan 2025 — Present</div>
+              <div class="ds-timeline-role" style="margin-top:var(--space-3);margin-bottom:0;" data-en="Customer Support Analyst" data-fr="Analyste Support Client">Customer Support Analyst</div>
             </div>
-            <div class="ds-timeline-logo">
-              <img src="logos/atmus.jpg" alt="Atmus Filtration Technologies">
+            <div class="exp-chevron" aria-hidden="true">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
-          <div class="ds-timeline-role" data-en="Customer Support Analyst" data-fr="Analyste Support Client">Customer Support Analyst</div>
-          <p class="ds-timeline-desc"
-             data-en="Managing the end-to-end order lifecycle for 20 strategic MEA accounts, ensuring on-time delivery and high customer satisfaction. Handle customer claims, issue credit/debit notes, and collaborate with logistics, finance, and sales teams to support regional growth. Use Salesforce and Oracle to track orders, manage interactions, and drive operational efficiency."
-             data-fr="Gestion du cycle complet des commandes pour 20 comptes stratégiques MEA, en assurant la livraison à temps et la satisfaction client. Traitement des réclamations, émission de notes de crédit/débit et collaboration avec les équipes logistique, finance et ventes pour soutenir la croissance régionale. Utilisation de Salesforce et Oracle pour suivre les commandes, gérer les interactions et améliorer l&apos;efficacité opérationnelle.">
-            Managing the end-to-end order lifecycle for 20 strategic MEA accounts,
-            ensuring on-time delivery and high customer satisfaction. Handle customer
-            claims, issue credit/debit notes, and collaborate with logistics, finance,
-            and sales teams to support regional growth.
-          </p>
-          <div class="ds-achievement"
-               data-en-html='<span>Managing</span> <span class="num">20</span> <span>strategic MEA accounts end-to-end</span>'
-               data-fr-html='<span>Gestion de</span> <span class="num">20</span> <span>comptes stratégiques MEA de bout en bout</span>'>
-            <span>Managing</span>
-            <span class="num">20</span>
-            <span>strategic MEA accounts end-to-end</span>
+
+          <!-- Hint -->
+          <div class="exp-hint">
+            <span class="exp-hint-line"></span>
+            <span data-en="Hover to expand" data-fr="Survoler pour voir">Hover to expand</span>
+            <span class="exp-hint-line"></span>
           </div>
-          <div class="ds-timeline-tags">
-            <span class="ds-tag">Salesforce</span>
-            <span class="ds-tag">Oracle</span>
-            <span class="ds-tag" data-en="Order Lifecycle" data-fr="Cycle des Commandes">Order Lifecycle</span>
-            <span class="ds-tag" data-en="MEA Region" data-fr="Région MEA">MEA Region</span>
-            <span class="ds-tag" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
-            <span class="ds-tag" data-en="Cross-functional" data-fr="Interfonctionnel">Cross-functional</span>
+
+          <!-- Body — déroulant au hover -->
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <div class="exp-body-content">
+                <p class="ds-timeline-desc"
+                   data-en="Managing the end-to-end order lifecycle for 20 strategic MEA accounts, ensuring on-time delivery and high customer satisfaction. Handle customer claims, issue credit/debit notes, and collaborate with logistics, finance, and sales teams to support regional growth. Use Salesforce and Oracle to track orders, manage interactions, and drive operational efficiency."
+                   data-fr="Gestion du cycle complet des commandes pour 20 comptes stratégiques MEA, en assurant la livraison à temps et la satisfaction client. Traitement des réclamations, émission de notes de crédit/débit et collaboration avec les équipes logistique, finance et ventes pour soutenir la croissance régionale. Utilisation de Salesforce et Oracle pour suivre les commandes, gérer les interactions et améliorer l&apos;efficacité opérationnelle.">
+                  Managing the end-to-end order lifecycle for 20 strategic MEA accounts,
+                  ensuring on-time delivery and high customer satisfaction. Handle customer
+                  claims, issue credit/debit notes, and collaborate with logistics, finance,
+                  and sales teams to support regional growth.
+                </p>
+                <div class="ds-achievement"
+                     data-en-html='<span>Managing</span> <span class="num">20</span> <span>strategic MEA accounts end-to-end</span>'
+                     data-fr-html='<span>Gestion de</span> <span class="num">20</span> <span>comptes stratégiques MEA de bout en bout</span>'>
+                  <span>Managing</span>
+                  <span class="num">20</span>
+                  <span>strategic MEA accounts end-to-end</span>
+                </div>
+                <div class="ds-timeline-tags">
+                  <span class="ds-tag">Salesforce</span>
+                  <span class="ds-tag">Oracle</span>
+                  <span class="ds-tag" data-en="Order Lifecycle" data-fr="Cycle des Commandes">Order Lifecycle</span>
+                  <span class="ds-tag" data-en="MEA Region" data-fr="Région MEA">MEA Region</span>
+                  <span class="ds-tag" data-en="Customer Claims" data-fr="Réclamations Clients">Customer Claims</span>
+                  <span class="ds-tag" data-en="Cross-functional" data-fr="Interfonctionnel">Cross-functional</span>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
@@ -409,38 +506,61 @@
       <div class="ds-timeline-item ds-fade-up">
         <div class="ds-timeline-dot"></div>
         <div class="ds-timeline-card">
-          <div class="ds-timeline-meta">
-            <div>
+
+          <!-- Header — toujours visible -->
+          <div class="exp-header">
+            <div class="exp-header-left">
+              <div class="ds-timeline-meta" style="margin-bottom:var(--space-2);">
+                <div class="ds-timeline-logo">
+                  <img src="logos/dhl.svg" alt="DHL Express">
+                </div>
+              </div>
               <div class="ds-timeline-company">DHL Express Worldwide</div>
               <div class="ds-timeline-period">2022 — 2023</div>
+              <div class="ds-timeline-role" style="margin-top:var(--space-3);margin-bottom:0;" data-en="Customer Service Support Coordinator · Account Manager" data-fr="Coordinateur Support Service Client · Responsable de Compte">Customer Service Support Coordinator · Account Manager</div>
             </div>
-            <div class="ds-timeline-logo">
-              <img src="logos/dhl.svg" alt="DHL Express">
+            <div class="exp-chevron" aria-hidden="true">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
-          <div class="ds-timeline-role" data-en="Customer Service Support Coordinator · Account Manager" data-fr="Coordinateur Support Service Client · Responsable de Compte">Customer Service Support Coordinator · Account Manager</div>
-          <p class="ds-timeline-desc"
-             data-en="Managed the Nokia global account, ensuring high satisfaction and retention. Conducted performance analyses to identify improvement opportunities, coordinated with warehouses to implement corrective action plans, and delivered Monthly &amp; Quarterly Business Reviews to senior management."
-             data-fr="Gestion du compte global Nokia, en assurant une satisfaction et une rétention élevées. Réalisation d&apos;analyses de performance, coordination avec les entrepôts pour des plans d&apos;action correctifs, et présentation de Business Reviews mensuelles &amp; trimestrielles à la direction.">
-            Managed the Nokia global account, ensuring high satisfaction and retention.
-            Conducted performance analyses, coordinated with warehouses to implement
-            corrective action plans, and delivered Monthly &amp; Quarterly Business
-            Reviews to senior management.
-          </p>
-          <div class="ds-achievement"
-               data-en-html='<span>Lifted Nokia service performance from</span> <span class="num">88% → 95%</span>'
-               data-fr-html='<span>Performance du service Nokia portée de</span> <span class="num">88% → 95%</span>'>
-            <span>Lifted Nokia service performance from</span>
-            <span class="num">88% → 95%</span>
+
+          <!-- Hint -->
+          <div class="exp-hint">
+            <span class="exp-hint-line"></span>
+            <span data-en="Hover to expand" data-fr="Survoler pour voir">Hover to expand</span>
+            <span class="exp-hint-line"></span>
           </div>
-          <div class="ds-timeline-tags">
-            <span class="ds-tag" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</span>
-            <span class="ds-tag">Nokia</span>
-            <span class="ds-tag">QBR / MBR</span>
-            <span class="ds-tag" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
-            <span class="ds-tag" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
-            <span class="ds-tag" data-en="Warehouse Coordination" data-fr="Coordination Entrepôts">Warehouse Coordination</span>
+
+          <!-- Body — déroulant au hover -->
+          <div class="exp-body">
+            <div class="exp-body-inner">
+              <div class="exp-body-content">
+                <p class="ds-timeline-desc"
+                   data-en="Managed the Nokia global account, ensuring high satisfaction and retention. Conducted performance analyses to identify improvement opportunities, coordinated with warehouses to implement corrective action plans, and delivered Monthly &amp; Quarterly Business Reviews to senior management."
+                   data-fr="Gestion du compte global Nokia, en assurant une satisfaction et une rétention élevées. Réalisation d&apos;analyses de performance, coordination avec les entrepôts pour des plans d&apos;action correctifs, et présentation de Business Reviews mensuelles &amp; trimestrielles à la direction.">
+                  Managed the Nokia global account, ensuring high satisfaction and retention.
+                  Conducted performance analyses, coordinated with warehouses to implement
+                  corrective action plans, and delivered Monthly &amp; Quarterly Business
+                  Reviews to senior management.
+                </p>
+                <div class="ds-achievement"
+                     data-en-html='<span>Lifted Nokia service performance from</span> <span class="num">88% → 95%</span>'
+                     data-fr-html='<span>Performance du service Nokia portée de</span> <span class="num">88% → 95%</span>'>
+                  <span>Lifted Nokia service performance from</span>
+                  <span class="num">88% → 95%</span>
+                </div>
+                <div class="ds-timeline-tags">
+                  <span class="ds-tag" data-en="Account Management" data-fr="Gestion de Comptes">Account Management</span>
+                  <span class="ds-tag">Nokia</span>
+                  <span class="ds-tag">QBR / MBR</span>
+                  <span class="ds-tag" data-en="Performance Analysis" data-fr="Analyse de Performance">Performance Analysis</span>
+                  <span class="ds-tag" data-en="KPI Reporting" data-fr="Reporting KPI">KPI Reporting</span>
+                  <span class="ds-tag" data-en="Warehouse Coordination" data-fr="Coordination Entrepôts">Warehouse Coordination</span>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
